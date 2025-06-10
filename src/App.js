@@ -6,6 +6,7 @@ import Lottie from 'react-lottie';
 import { motion } from 'framer-motion';
 import coderAnimation from './assets/coder.json';
 
+
 const App = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
