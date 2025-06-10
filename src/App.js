@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import 'bootstrap/dist/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'; // Corrected Bootstrap import
 import MyNavbar from './Navbar';
-import Lottie from 'lottie-react';
+import Lottie from 'react-lottie';
 import { motion } from 'framer-motion';
 import coderAnimation from './assets/coder.json';
 
@@ -114,7 +114,7 @@ const App = () => {
                   <h1 className="hero-title">
                     I'm <span className="gradient-text">Priyanshu Shakya</span>
                   </h1>
-                  <p className="hero-subtitle">Computer Science Engineer </p>
+                  <p className="hero-subtitle">CS Engineer & AI Innovator</p>
                   <p className="hero-description">
                     Building cutting-edge software and pushing AI boundaries with creativity and precision.
                   </p>
@@ -170,7 +170,7 @@ const App = () => {
                 </p>
                 <p className="about-text">
                   From AI-driven healthcare to scalable web apps, I thrive on solving real-world problems. 
-                 
+                  My internship at HardShell Technologies refined my skills in data-driven development.
                 </p>
                 <p className="about-text">
                   I focus on clean code, intuitive UX, and innovative solutions, always eager to learn and grow.
@@ -431,7 +431,7 @@ const App = () => {
               <div className="row justify-content-center">
                 <div className="col-lg-8">
                   <p className="contact-lead">
-                    Let's collaborate on innovative projects!
+                    Let's collaborate on innovative projects or discuss tech possibilities!
                   </p>
                   <div className="contact-cards">
                     <motion.div className="contact-card" whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
