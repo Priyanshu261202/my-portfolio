@@ -1,178 +1,126 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/bootstrap.min.css';
 import MyNavbar from './Navbar';
-import Lottie from 'lottie-react';
+import Lottie from 'react-lottie';
 import { motion } from 'framer-motion';
-
 import coderAnimation from './assets/coder.json';
 
-function App() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+const App = () => {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
+    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
   const skills = [
-    { category: "Languages", items: ["C", "C++", "Java", "Python", "SQL"] },
-    { category: "Web Development", items: ["ReactJS", "Flask", "HTML5", "CSS3", "JavaScript", "API Integration"] },
-    { category: "Tools", items: ["VS Code", "CAD", "Matplotlib", "Git", "GitHub"] },
-    { category: "Databases & Cloud", items: ["SQL", "AWS", "Oracle"] }
+    { category: "Languages", items: ["C++", "Java", "Python", "SQL"] },
+    { category: "Web Development", items: ["React", "Flask", "HTML5", "CSS3", "JavaScript"] },
+    { category: "Tools", items: ["VS Code", "Git", "GitHub", "Figma"] },
+    { category: "Cloud & AI", items: ["AWS", "TensorFlow", "SQL"] }
   ];
 
   const projects = [
     {
-      title: "CareCheck: Lung Cancer Diagnosis System",
-      period: "December 2024 – May 2025",
-      description: "AI-powered lung cancer detection system using CNN with Flask backend and responsive frontend.",
-      tech: ["Python", "Flask", "CNN", "HTML5", "CSS3", "JavaScript"],
-      highlights: ["Achieved high accuracy with CNN model", "Preprocessed CT scan datasets", "Full-stack implementation"]
+      title: "CareCheck: Lung Cancer Diagnosis",
+      period: "Dec 2024 – May 2025",
+      description: "AI-driven lung cancer detection using CNN with a Flask backend and responsive UI.",
+      tech: ["Python", "Flask", "TensorFlow", "React", "AWS"],
+      highlights: ["95%+ model accuracy", "Real-time CT scan analysis", "Scalable cloud deployment"]
     },
     {
-      title: "Full-Stack Café Management System",
-      period: "May 2025 – June 2025",
-      description: "Complete café management solution with QR-based ordering and real-time tracking.",
-      tech: ["Flask", "SQL", "QR Integration", "Real-time Systems"],
-      highlights: ["Multi-dashboard system", "QR-based digital menu", "Dynamic pricing", "Deployed on Render"]
+      title: "CaféSync: Management System",
+      period: "May 2025 – Jun 2025",
+      description: "Full-stack café solution with QR-based ordering and live order tracking.",
+      tech: ["Flask", "SQL", "React", "WebSocket"],
+      highlights: ["Real-time dashboards", "QR menu integration", "Hosted on AWS"]
     },
     {
-      title: "Heart Disease Prediction",
-      period: "June 2022 – July 2022",
-      description: "ML-based predictive model comparing multiple algorithms for heart disease detection.",
-      tech: ["Python", "Decision Trees", "Random Forest", "SVM", "GBM"],
-      highlights: ["Algorithm comparison", "Clinical data analysis", "Predictive modeling"]
+      title: "Heart Disease Predictor",
+      period: "Jun 2022 – Jul 2022",
+      description: "ML model comparing algorithms for heart disease prediction.",
+      tech: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
+      highlights: ["Multi-algorithm analysis", "High predictive accuracy", "Data visualization"]
     }
   ];
 
   const experiences = [
     {
-      company: "HardShell Technologies Pvt. Ltd.",
+      company: "HardShell Technologies",
       role: "SDE Intern",
-      period: "May 2024 – July 2024",
-      location: "Noida, Uttar Pradesh",
-      description: "Contributed to E-STEM project focusing on data analysis and visualization for skills development schemes.",
-      achievements: ["Data analysis for E-STEM Dashboard", "DDU-GKY Scheme implementation", "Ministry of Rural Development collaboration"]
-    },
-    // Add more experiences here following the same structure
-    // {
-    //   company: "Your Next Company",
-    //   role: "Your Next Role",
-    //   period: "Start Date – End Date",
-    //   location: "City, State",
-    //   description: "Brief description of your role and responsibilities.",
-    //   achievements: ["Achievement 1", "Achievement 2", "Achievement 3"]
-    // }
+      period: "May 2024 – Jul 2024",
+      location: "New Delhi, India",
+      description: "Developed data visualization tools for E-STEM project, supporting skill development programs.",
+      achievements: ["Built E-STEM dashboards", "Integrated DDU-GKY data", "Collaborated with government"]
+    }
   ];
 
   const education = [
-    {
-      institution: "Amity University, Noida",
-      degree: "B. Tech, Computer Science and Engineering",
-      period: "July 2021 – May 2025"
-    },
-    {
-      institution: "MBS International School",
-      degree: "Class XII (CBSE Board)",
-      period: "July 2020 – May 2021"
-    },
-    {
-      institution: "Vishwa Bharati Public School",
-      degree: "Class X (CBSE Board)",
-      period: "July 2018 – May 2019"
-    }
+    { institution: "Amity University", degree: "B.Tech Computer Science", period: "2021–2025" },
+    { institution: "MBS International School", degree: "Class XII (CBSE)", period: "2020–2021" },
+    { institution: "Vishwa Bharati School", degree: "Class X (CBSE)", period: "2018–2019" }
   ];
 
   const extracurriculars = [
-    "Secretary General - Virtual Reality and Game Development Club (Jan 2023 – Jan 2025)",
-    "Public Relations - IEEE Student Branch (Jan 2022 – August 2023)",
-    "Student Organizer - ASET Freshers (October 2024)",
-    "Amity Youth Fest - Organizer (March 2023)",
-    "Cybercup (Hackathon) - Participant (January 2023)"
+    "Secretary General, VR & Game Dev Club (2023–Present)",
+    "PR Lead, IEEE Student Branch (2022–2023)",
+    "Organizer, ASET Freshers (2024)",
+    "Amity Youth Fest Organizer (2023)",
+    "CyberHack Participant (2024)"
   ];
 
   const certificates = [
-    {
-      title: "NPTEL: Python for Data Science",
-      image: "/path/to/certificate1.jpg" // Replace with actual image path
-    },
-    {
-      title: "AWS Academy: Cloud Foundations",
-      image: "/path/to/certificate2.jpg" // Replace with actual image path
-    },
-    {
-      title: "IBM: Data Fundamentals",
-      image: "/path/to/certificate3.jpg" // Replace with actual image path
-    },
-    {
-      title: "Google Cloud: Prompt Design in Vertex AI",
-      image: "/path/to/certificate4.jpg" // Replace with actual image path
-    }
-    // Add more certificates here following the same structure
-    // {
-    //   title: "Your Certificate Name",
-    //   image: "/path/to/certificate.jpg"
-    // }
+    { title: "NPTEL: Python for Data Science", image: '#' },
+    { title: "AWS: Cloud Practitioner", image: '#' },
+    { title: "IBM: AI Fundamentals", image: '#' },
+    { title: "Google Cloud: Vertex AI", image: '#' }
   ];
+
+  const lottieOptions = {
+    animationData: coderAnimation,
+    loop: true,
+    autoplay: true,
+    rendererSettings: { preserveAspectRatio: 'xMidYMid slice' }
+  };
 
   return (
     <>
       <div 
         className="cursor-effect"
-        style={{
-          left: mousePosition.x - 20,
-          top: mousePosition.y - 20,
-        }}
+        style={{ left: mousePos.x - 20, top: mousePos.y - 20 }}
+        aria-hidden="true"
       />
-      
       <MyNavbar />
-      
-      <div className="app bg-dark text-white" style={{ paddingTop: '70px' }}>
-        {/* Floating Elements */}
+      <div className="app" style={{ paddingTop: '80px' }}>
         <div className="floating-elements">
           <div className="floating-element floating-element-1"></div>
           <div className="floating-element floating-element-2"></div>
           <div className="floating-element floating-element-3"></div>
         </div>
 
-        {/* Hero Section */}
         <section id="hero" className="hero-section">
           <div className="hero-background-overlay"></div>
           <div className="container">
             <div className="row align-items-center min-vh-100">
               <div className="col-lg-6">
                 <motion.div
-                  initial={{ opacity: 0, x: -50 }}
+                  initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 1, ease: "easeOut" }}
+                  transition={{ duration: 0.8 }}
                 >
-                  <div className="hero-badge">
-                    <span>👋 Welcome to my digital space</span>
-                  </div>
+                  <div className="hero-badge">👋 Welcome</div>
                   <h1 className="hero-title">
-                    Hi, I'm <span className="gradient-text">Priyanshu Shakya</span>
+                    I'm <span className="gradient-text">Priyanshu Shakya</span>
                   </h1>
-                  <p className="hero-subtitle">
-                    Computer Science Engineer & AI Enthusiast
-                  </p>
+                  <p className="hero-subtitle">Computer Science Engineer </p>
                   <p className="hero-description">
-                    Crafting innovative software solutions and exploring the frontiers of artificial intelligence 
-                    with passion, precision, and purpose.
+                    Building cutting-edge software and pushing AI boundaries with creativity and precision.
                   </p>
                   <div className="hero-buttons">
-                    <a href="#contact" className="btn btn-primary btn-lg">
-                      <span>Get In Touch</span>
-                      <div className="btn-shine"></div>
-                    </a>
-                    <a href="#projects" className="btn btn-glass btn-lg">
-                      <span>View Work</span>
-                      <i className="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="#contact" className="btn btn-primary">Contact Me</a>
+                    <a href="#projects" className="btn btn-glass">Explore Projects</a>
                   </div>
                   <div className="hero-stats">
                     <div className="stat-item">
@@ -181,110 +129,85 @@ function App() {
                     </div>
                     <div className="stat-item">
                       <span className="stat-number">1+</span>
-                      <span className="stat-label">Experience</span>
+                      <span className="stat-label">Years Exp</span>
                     </div>
                     <div className="stat-item">
                       <span className="stat-number">4+</span>
-                      <span className="stat-label">Certificates</span>
+                      <span className="stat-label">Certifications</span>
                     </div>
                   </div>
                 </motion.div>
               </div>
               <div className="col-lg-6">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8, rotateY: 20 }}
-                  animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                  transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
                   className="hero-animation-container"
                 >
                   <div className="animation-backdrop"></div>
-                  <Lottie 
-                    animationData={coderAnimation} 
-                    style={{ height: 450, zIndex: 2, position: 'relative' }} 
-                  />
+                  <Lottie options={lottieOptions} height={400} style={{ zIndex: 2 }} />
                 </motion.div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* About Section */}
         <section id="about" className="section">
           <div className="container">
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
               <h2 className="section-title">
-                <span className="title-number">01.</span>
-                About Me
+                <span className="title-number">01.</span>About
               </h2>
-              <div className="row justify-content-center">
-                <div className="col-lg-10">
-                  <div className="about-card">
-                    <div className="about-content">
-                      <p className="about-lead">
-                        I'm a dedicated Computer Science student at Amity University with a passion for 
-                        creating impactful software solutions that make a difference.
-                      </p>
-                      <p className="about-text">
-                        My journey spans from AI-powered healthcare applications to full-stack web development, 
-                        always driven by curiosity and innovation. Currently based in New Delhi, I've gained 
-                        valuable industry experience as an SDE Intern at HardShell Technologies, where I 
-                        contributed to enterprise-level solutions for skills development programs.
-                      </p>
-                      <p className="about-text">
-                        My academic foundation combined with hands-on experience has shaped my approach to 
-                        problem-solving and software development, focusing on clean code, user experience, 
-                        and scalable solutions.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              <div className="about-card">
+                <p className="about-lead">
+                  Passionate CS student at Amity University, building impactful tech solutions.
+                </p>
+                <p className="about-text">
+                  From AI-driven healthcare to scalable web apps, I thrive on solving real-world problems. 
+                 
+                </p>
+                <p className="about-text">
+                  I focus on clean code, intuitive UX, and innovative solutions, always eager to learn and grow.
+                </p>
               </div>
             </motion.div>
           </div>
         </section>
 
-        {/* Skills Section */}
         <section id="skills" className="section">
           <div className="container">
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
               <h2 className="section-title">
-                <span className="title-number">02.</span>
-                Technical Arsenal
+                <span className="title-number">02.</span>Skills
               </h2>
               <div className="skills-grid">
-                {skills.map((skillGroup, index) => (
+                {skills.map((skill, i) => (
                   <motion.div 
-                    key={index} 
+                    key={i} 
                     className="skill-card"
-                    whileHover={{ scale: 1.02, rotateY: 5 }}
+                    whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
                     <div className="skill-header">
-                      <h4 className="skill-category">{skillGroup.category}</h4>
+                      <h4 className="skill-category">{skill.category}</h4>
                       <div className="skill-icon">
-                        <i className={`fas fa-${index === 0 ? 'code' : index === 1 ? 'globe' : index === 2 ? 'tools' : 'database'}`}></i>
+                        <i className={`fas fa-${i === 0 ? 'code' : i === 1 ? 'laptop-code' : i === 2 ? 'tools' : 'cloud'}`} />
                       </div>
                     </div>
                     <div className="skill-tags">
-                      {skillGroup.items.map((skill, idx) => (
-                        <motion.span 
-                          key={idx} 
-                          className="skill-tag"
-                          whileHover={{ scale: 1.05 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          {skill}
-                        </motion.span>
+                      {skill.items.map((item, j) => (
+                        <span key={j} className="skill-tag">{item}</span>
                       ))}
                     </div>
                   </motion.div>
@@ -294,33 +217,31 @@ function App() {
           </div>
         </section>
 
-        {/* Experience Section */}
         <section id="experience" className="section">
           <div className="container">
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
               <h2 className="section-title">
-                <span className="title-number">03.</span>
-                Professional Journey
+                <span className="title-number">03.</span>Experience
               </h2>
               <div className="experience-timeline">
-                {experiences.map((exp, index) => (
+                {experiences.map((exp, i) => (
                   <motion.div 
-                    key={index} 
+                    key={i} 
                     className="experience-item"
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    transition={{ duration: 0.5 }}
                     viewport={{ once: true }}
                   >
                     <div className="experience-marker"></div>
                     <div className="experience-card">
                       <div className="experience-header">
-                        <div className="experience-title-section">
+                        <div>
                           <h4 className="experience-role">{exp.role}</h4>
                           <h5 className="experience-company">{exp.company}</h5>
                         </div>
@@ -331,10 +252,10 @@ function App() {
                       </div>
                       <p className="experience-description">{exp.description}</p>
                       <div className="experience-achievements">
-                        {exp.achievements.map((achievement, idx) => (
-                          <div key={idx} className="achievement-item">
+                        {exp.achievements.map((ach, j) => (
+                          <div key={j} className="achievement-item">
                             <i className="fas fa-chevron-right"></i>
-                            <span>{achievement}</span>
+                            <span>{ach}</span>
                           </div>
                         ))}
                       </div>
@@ -346,50 +267,44 @@ function App() {
           </div>
         </section>
 
-        {/* Projects Section */}
         <section id="projects" className="section">
           <div className="container">
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
               <h2 className="section-title">
-                <span className="title-number">04.</span>
-                Featured Projects
+                <span className="title-number">04.</span>Projects
               </h2>
               <div className="projects-grid">
-                {projects.map((project, index) => (
-                  <motion.div
-                    key={index}
+                {projects.map((proj, i) => (
+                  <motion.div 
+                    key={i} 
                     className="project-card"
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ 
-                      scale: 1.02, 
-                      rotateX: 5,
-                      rotateY: 5,
-                    }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <div className="project-number">{String(index + 1).padStart(2, '0')}</div>
+                    <div className="project-number">{String(i + 1).padStart(2, '0')}</div>
                     <div className="project-header">
-                      <h4 className="project-title">{project.title}</h4>
-                      <span className="project-period">{project.period}</span>
+                      <h4 className="project-title">{proj.title}</h4>
+                      <span className="project-period">{proj.period}</span>
                     </div>
-                    <p className="project-description">{project.description}</p>
+                    <p className="project-description">{proj.description}</p>
                     <div className="project-tech">
-                      {project.tech.map((tech, idx) => (
-                        <span key={idx} className="tech-tag">{tech}</span>
+                      {proj.tech.map((item, j) => (
+                        <span key={j} className="tech-tag">{item}</span>
                       ))}
                     </div>
                     <div className="project-highlights">
-                      {project.highlights.map((highlight, idx) => (
-                        <div key={idx} className="highlight-item">
+                      {proj.highlights.map((hl, j) => (
+                        <div key={j} className="highlight-item">
                           <i className="fas fa-star"></i>
-                          <span>{highlight}</span>
+                          <span>{hl}</span>
                         </div>
                       ))}
                     </div>
@@ -400,27 +315,25 @@ function App() {
           </div>
         </section>
 
-        {/* Education Section */}
         <section id="education" className="section">
           <div className="container">
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
               <h2 className="section-title">
-                <span className="title-number">05.</span>
-                Academic Foundation
+                <span className="title-number">05.</span>Education
               </h2>
               <div className="education-timeline">
-                {education.map((edu, index) => (
+                {education.map((edu, i) => (
                   <motion.div 
-                    key={index} 
+                    key={i} 
                     className="education-item"
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                    initial={{ opacity: 0, x: i % 2 ? 20 : -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.2 }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
                     viewport={{ once: true }}
                   >
                     <div className="education-marker"></div>
@@ -436,39 +349,34 @@ function App() {
           </div>
         </section>
 
-        {/* Certifications Section */}
         <section id="certifications" className="section">
           <div className="container">
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
               <h2 className="section-title">
-                <span className="title-number">06.</span>
-                Certifications & Achievements
+                <span className="title-number">06.</span>Certifications
               </h2>
               <div className="certificates-grid">
-                {certificates.map((cert, index) => (
-                  <motion.div
-                    key={index}
+                {certificates.map((cert, i) => (
+                  <motion.div 
+                    key={i} 
                     className="certificate-card"
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    whileHover={{ scale: 1.05, rotateY: 10 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
                     viewport={{ once: true }}
                   >
                     <div className="certificate-image">
-                      <img src={cert.image} alt={cert.title} />
                       <div className="certificate-overlay">
                         <i className="fas fa-certificate"></i>
                       </div>
                     </div>
-                    <div className="certificate-content">
-                      <h5 className="certificate-title">{cert.title}</h5>
-                    </div>
+                    <h5 className="certificate-title">{cert.title}</h5>
                   </motion.div>
                 ))}
               </div>
@@ -476,34 +384,32 @@ function App() {
           </div>
         </section>
 
-        {/* Extracurriculars Section */}
         <section id="extracurriculars" className="section">
           <div className="container">
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
               <h2 className="section-title">
-                <span className="title-number">07.</span>
-                Leadership & Activities
+                <span className="title-number">07.</span>Activities
               </h2>
               <div className="activities-grid">
-                {extracurriculars.map((activity, index) => (
-                  <motion.div
-                    key={index}
+                {extracurriculars.map((act, i) => (
+                  <motion.div 
+                    key={i} 
                     className="activity-card"
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    transition={{ duration: 0.4, delay: i * 0.1 }}
                     viewport={{ once: true }}
                   >
                     <div className="activity-icon">
                       <i className="fas fa-trophy"></i>
                     </div>
-                    <span className="activity-text">{activity}</span>
+                    <span className="activity-text">{act}</span>
                   </motion.div>
                 ))}
               </div>
@@ -511,97 +417,76 @@ function App() {
           </div>
         </section>
 
-        {/* Contact Section */}
         <section id="contact" className="section contact-section">
           <div className="container">
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
               <h2 className="section-title">
-                <span className="title-number">08.</span>
-                Let's Create Something Amazing
+                <span className="title-number">08.</span>Contact
               </h2>
               <div className="row justify-content-center">
                 <div className="col-lg-8">
-                  <div className="contact-content">
-                    <p className="contact-lead">
-                      Ready to turn ideas into reality? I'm always excited to discuss new opportunities, 
-                      innovative projects, or just have a conversation about technology and its possibilities.
-                    </p>
-                    
-                    <div className="contact-cards">
-                      <motion.div 
-                        className="contact-card"
-                        whileHover={{ scale: 1.05, rotateY: 10 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="contact-icon">
-                          <i className="fas fa-envelope"></i>
-                        </div>
-                        <div className="contact-info">
-                          <h5>Email</h5>
-                          <a href="mailto:priyanshushakya.work@gmail.com">priyanshushakya.work@gmail.com</a>
-                        </div>
-                      </motion.div>
-
-                      <motion.div 
-                        className="contact-card"
-                        whileHover={{ scale: 1.05, rotateY: 10 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="contact-icon">
-                          <i className="fas fa-phone"></i>
-                        </div>
-                        <div className="contact-info">
-                          <h5>Phone</h5>
-                          <a href="tel:+919821567780">+91-9821567780</a>
-                        </div>
-                      </motion.div>
-
-                      <motion.div 
-                        className="contact-card"
-                        whileHover={{ scale: 1.05, rotateY: 10 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="contact-icon">
-                          <i className="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div className="contact-info">
-                          <h5>Location</h5>
-                          <span>New Delhi, India</span>
-                        </div>
-                      </motion.div>
-                    </div>
-
-                    <div className="social-section">
-                      <h4>Connect with me</h4>
-                      <div className="social-links">
-                        <motion.a 
-                          href="https://linkedin.com/in/priyanshu-shakya-129455246/" 
-                          target="_blank" 
-                          rel="noreferrer" 
-                          className="social-link"
-                          whileHover={{ scale: 1.1, rotateZ: 5 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <i className="fab fa-linkedin-in"></i>
-                          <span>LinkedIn</span>
-                        </motion.a>
-                        <motion.a 
-                          href="https://github.com/your-github" 
-                          target="_blank" 
-                          rel="noreferrer" 
-                          className="social-link"
-                          whileHover={{ scale: 1.1, rotateZ: -5 }}
-                          transition={{ duration: 0.3 }}
-                        >
-                          <i className="fab fa-github"></i>
-                          <span>GitHub</span>
-                        </motion.a>
+                  <p className="contact-lead">
+                    Let's collaborate on innovative projects!
+                  </p>
+                  <div className="contact-cards">
+                    <motion.div className="contact-card" whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
+                      <div className="contact-icon">
+                        <i className="fas fa-envelope"></i>
                       </div>
+                      <div className="contact-info">
+                        <h5>Email</h5>
+                        <a href="mailto:priyanshushakya.work@gmail.com">priyanshushakya.work@gmail.com</a>
+                      </div>
+                    </motion.div>
+                    <motion.div className="contact-card" whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
+                      <div className="contact-icon">
+                        <i className="fas fa-phone"></i>
+                      </div>
+                      <div className="contact-info">
+                        <h5>Phone</h5>
+                        <a href="tel:+919821567780">+91-9821567780</a>
+                      </div>
+                    </motion.div>
+                    <motion.div className="contact-card" whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
+                      <div className="contact-icon">
+                        <i className="fas fa-map-marker-alt"></i>
+                      </div>
+                      <div className="contact-info">
+                        <h5>Location</h5>
+                        <span>New Delhi, India</span>
+                      </div>
+                    </motion.div>
+                  </div>
+                  <div className="social-section">
+                    <h4>Connect</h4>
+                    <div className="social-links">
+                      <motion.a 
+                        href="https://linkedin.com/in/priyanshu-shakya-129455246" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="social-link"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <i className="fab fa-linkedin"></i>
+                        LinkedIn
+                      </motion.a>
+                      <motion.a 
+                        href="https://github.com/priyanshu-shakya" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="social-link"
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <i className="fab fa-github"></i>
+                        GitHub
+                      </motion.a>
                     </div>
                   </div>
                 </div>
@@ -610,15 +495,14 @@ function App() {
           </div>
         </section>
 
-        {/* Footer */}
         <footer className="footer">
           <div className="container">
             <div className="footer-content">
               <div className="footer-text">
-               
+                <p>© 2025 Priyanshu Shakya. Built with React & Passion.</p>
               </div>
               <div className="footer-links">
-                <a href="#hero">Back to Top</a>
+                <a href="#hero">Top</a>
               </div>
             </div>
           </div>
@@ -626,6 +510,6 @@ function App() {
       </div>
     </>
   );
-}
+};
 
 export default App;
