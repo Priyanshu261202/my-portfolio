@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import 'bootstrap/dist/bootstrap.min.css';
 import MyNavbar from './Navbar';
-import Lottie from 'react-lottie';
+import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
 import coderAnimation from './assets/coder.json';
 
