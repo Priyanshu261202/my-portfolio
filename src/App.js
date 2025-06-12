@@ -555,11 +555,11 @@ const App = () => {
               <motion.div className="contact-grid" {...staggerContainer}>
                 <motion.div className="glass-card contact-info" {...fadeInUp}>
                   <h5><FaEnvelope className="me-2" />Email</h5>
-                  <a href="mailto:priyanshu.shakya@example.com">priyanshu.shakya@example.com</a>
+                  <a href="mailto:priyanshushakya.work@gmail.com">priyanshu.shakya@example.com</a>
                 </motion.div>
                 <motion.div className="glass-card contact-info" {...fadeInUp}>
                   <h5><FaPhone className="me-2" />Phone</h5>
-                  <span>+91 12345 67890</span>
+                  <span>+91 9821567780</span>
                 </motion.div>
                 <motion.div className="glass-card contact-info" {...fadeInUp}>
                   <h5><FaMapMarkerAlt className="me-2" />Location</h5>
