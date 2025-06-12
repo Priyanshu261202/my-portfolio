@@ -1,179 +1,412 @@
-import React, { useState, useEffect } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css'; // Corrected Bootstrap import
+import 'bootstrap/dist/css/bootstrap.min.css';
 import MyNavbar from './Navbar';
 import Lottie from 'react-lottie';
 import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
+import { FaLinkedin, FaGithub, FaPython, FaReact, FaJava, FaAws, FaHtml5, FaCss3Alt, FaJs, FaGitAlt, FaFigma, FaDatabase, FaEnvelope, FaPhone, FaMapMarkerAlt, FaExternalLinkAlt } from 'react-icons/fa';
+import { SiTensorflow, SiFlask, SiScikitlearn, SiPandas } from 'react-icons/si';
 import coderAnimation from './assets/coder.json';
 
 const App = () => {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-
   useEffect(() => {
-    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    let retries = 0;
+    const maxRetries = 3;
+    const retryDelay = 1000; // 1 second
+
+    const initParticles = () => {
+      if (window.particlesJS) {
+        console.log('Initializing particles.js');
+        window.particlesJS('particles-js', {
+          particles: {
+            number: {
+              value: 80,
+              density: {
+                enable: true,
+                value_area: 800
+              }
+            },
+            color: {
+              value: "#4fff00"
+            },
+            shape: {
+              type: "circle",
+              stroke: {
+                width: 0,
+                color: "#000000"
+              }
+            },
+            opacity: {
+              value: 0.7,
+              random: false,
+              anim: {
+                enable: false,
+                speed: 1,
+                opacity_min: 0.1,
+                sync: false
+              }
+            },
+            size: {
+              value: 3,
+              random: true,
+              anim: {
+                enable: false,
+                speed: 0,
+                size_min: 0.1,
+                sync: false
+              }
+            },
+            line_linked: {
+              enable: true,
+              distance: 150,
+              color: "#6fff7e",
+              opacity: 0.4,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 6,
+              direction: "none",
+              random: false,
+              straight: false,
+              out_mode: "out",
+              bounce: false,
+              attract: {
+                enable: false,
+                rotateX: 600,
+                rotateY: 1200
+              }
+            }
+          },
+          interactivity: {
+            detect_on: "canvas",
+            events: {
+              onhover: {
+                enable: true,
+                mode: "grab"
+              },
+              onclick: {
+                enable: true,
+                mode: "push"
+              },
+              resize: true
+            },
+            modes: {
+              grab: {
+                distance: 300, // Increased for more noticeable effect
+                line_linked: {
+                  opacity: 1,
+                  color: "#6fff7e" // Match particle lines
+                }
+              },
+              bubble: {
+                distance: 170,
+                size: 40,
+                duration: 0.8,
+                opacity: 0.45,
+                speed: 3
+              },
+              repulse: {
+                distance: 200,
+                duration: 0.4
+              },
+              push: {
+                particles_nb: 4
+              },
+              remove: {
+                particles_nb: 2
+              }
+            }
+          },
+          retina_detect: true
+        });
+        console.log('particles.js initialized successfully');
+      } else {
+        console.error('particles.js not loaded yet. Retrying...', { retries });
+        if (retries < maxRetries) {
+          retries++;
+          setTimeout(initParticles, retryDelay);
+        } else {
+          console.error('Max retries reached. particles.js failed to load.');
+        }
+      }
+    };
+
+    // Check if particles.js is already loaded
+    if (window.particlesJS) {
+      initParticles();
+    } else {
+      // Load particles.js dynamically
+      console.log('Loading particles.js from CDN');
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js';
+      script.async = true;
+      script.onload = () => {
+        console.log('particles.js CDN loaded');
+        initParticles();
+      };
+      script.onerror = () => {
+        console.error('Failed to load particles.js from CDN');
+        if (retries < maxRetries) {
+          retries++;
+          setTimeout(initParticles, retryDelay);
+        }
+      };
+      document.body.appendChild(script);
+    }
+
+    // Cleanup on unmount
+    return () => {
+      if (window.pJSDom && window.pJSDom[0]) {
+        window.pJSDom[0].pJS.fn.vendors.destroypJS();
+        window.pJSDom = [];
+        console.log('particles.js cleaned up');
+      }
+    };
   }, []);
 
-  const skills = [
-    { category: "Languages", items: ["C++", "Java", "Python", "SQL"] },
-    { category: "Web Development", items: ["React", "Flask", "HTML5", "CSS3", "JavaScript"] },
-    { category: "Tools", items: ["VS Code", "Git", "GitHub", "Figma"] },
-    { category: "Cloud & AI", items: ["AWS", "TensorFlow", "SQL"] }
-  ];
-
-  const projects = [
-    {
-      title: "CareCheck: Lung Cancer Diagnosis",
-      period: "Dec 2024 – May 2025",
-      description: "AI-driven lung cancer detection using CNN with a Flask backend and responsive UI.",
-      tech: ["Python", "Flask", "TensorFlow", "React", "AWS"],
-      highlights: ["95%+ model accuracy", "Real-time CT scan analysis", "Scalable cloud deployment"]
+  const skills = useMemo(() => [
+    { 
+      category: 'Programming Languages', 
+      items: [
+        { name: 'C++', icon: <FaJava /> }, 
+        { name: 'Java', icon: <FaJava /> }, 
+        { name: 'Python', icon: <FaPython /> }, 
+        { name: 'SQL', icon: <FaDatabase /> }
+      ] 
     },
-    {
-      title: "CaféSync: Management System",
-      period: "May 2025 – Jun 2025",
-      description: "Full-stack café solution with QR-based ordering and live order tracking.",
-      tech: ["Flask", "SQL", "React", "WebSocket"],
-      highlights: ["Real-time dashboards", "QR menu integration", "Hosted on AWS"]
+    { 
+      category: 'Web Development', 
+      items: [
+        { name: 'React', icon: <FaReact /> }, 
+        { name: 'Flask', icon: <SiFlask /> }, 
+        { name: 'HTML5', icon: <FaHtml5 /> }, 
+        { name: 'CSS3', icon: <FaCss3Alt /> }, 
+        { name: 'JavaScript', icon: <FaJs /> }
+      ] 
     },
-    {
-      title: "Heart Disease Predictor",
-      period: "Jun 2022 – Jul 2022",
-      description: "ML model comparing algorithms for heart disease prediction.",
-      tech: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
-      highlights: ["Multi-algorithm analysis", "High predictive accuracy", "Data visualization"]
-    }
-  ];
+    { 
+      category: 'Development Tools', 
+      items: [
+        { name: 'VS Code', icon: null }, 
+        { name: 'Git', icon: <FaGitAlt /> }, 
+        { name: 'GitHub', icon: <FaGithub /> }, 
+        { name: 'Figma', icon: <FaFigma /> }
+      ] 
+    },
+    { 
+      category: 'Cloud & AI Technologies', 
+      items: [
+        { name: 'AWS', icon: <FaAws /> }, 
+        { name: 'TensorFlow', icon: <SiTensorflow /> }, 
+        { name: 'Scikit-learn', icon: <SiScikitlearn /> }, 
+        { name: 'Pandas', icon: <SiPandas /> }
+      ] 
+    },
+  ], []);
 
-  const experiences = [
-    {
-      company: "HardShell Technologies",
-      role: "SDE Intern",
-      period: "May 2024 – Jul 2024",
-      location: "New Delhi, India",
-      description: "Developed data visualization tools for E-STEM project, supporting skill development programs.",
-      achievements: ["Built E-STEM dashboards", "Integrated DDU-GKY data", "Collaborated with government"]
-    }
-  ];
+  const projects = useMemo(() => [
+    { 
+      title: 'CareCheck: AI Lung Cancer Diagnosis', 
+      period: 'December 2024 – May 2025', 
+      description: 'Advanced AI-driven lung cancer detection system using Convolutional Neural Networks with Flask backend and responsive React frontend.', 
+      tech: [
+        { name: 'Python', icon: <FaPython /> }, 
+        { name: 'Flask', icon: <SiFlask /> }, 
+        { name: 'TensorFlow', icon: <SiTensorflow /> }, 
+        { name: 'React', icon: <FaReact /> }, 
+        { name: 'AWS', icon: <FaAws /> }
+      ], 
+      highlights: [
+        '95%+ model accuracy with advanced CNN architecture',
+        'Real-time CT scan analysis and diagnosis',
+        'Scalable cloud deployment on AWS infrastructure',
+        'Responsive UI with interactive visualizations'
+      ] 
+    },
+    { 
+      title: 'CaféSync: Smart Management System', 
+      period: 'May 2025 – June 2025', 
+      description: 'Comprehensive full-stack café management solution featuring QR-based ordering system and real-time order tracking capabilities.', 
+      tech: [
+        { name: 'Flask', icon: <SiFlask /> }, 
+        { name: 'SQL', icon: <FaDatabase /> }, 
+        { name: 'React', icon: <FaReact /> }, 
+        { name: 'WebSocket', icon: null }
+      ], 
+      highlights: [
+        'Real-time order dashboards with live updates',
+        'QR code menu integration for contactless ordering',
+        'Multi-role user management system',
+        'Cloud hosting on AWS with high availability'
+      ] 
+    },
+    { 
+      title: 'Heart Disease Prediction Model', 
+      period: 'June 2022', 
+      description: 'Machine learning project comparing multiple algorithms for accurate heart disease prediction with comprehensive data analysis.', 
+      tech: [
+        { name: 'Python', icon: <FaPython /> }, 
+        { name: 'Scikit-learn', icon: <SiScikitlearn /> }, 
+        { name: 'Pandas', icon: <SiPandas /> }, 
+        { name: 'Matplotlib', icon: null }
+      ], 
+      highlights: [
+        'Multi-algorithm comparison and analysis',
+        'High predictive accuracy with cross-validation',
+        'Interactive data visualizations and insights',
+        'Feature importance analysis and optimization'
+      ] 
+    },
+  ], []);
 
-  const education = [
-    { institution: "Amity University", degree: "B.Tech Computer Science", period: "2021–2025" },
-    { institution: "MBS International School", degree: "Class XII (CBSE)", period: "2020–2021" },
-    { institution: "Vishwa Bharati School", degree: "Class X (CBSE)", period: "2018–2019" }
-  ];
+  const experiences = useMemo(() => [
+    { 
+      company: 'HardShell Technologies', 
+      role: 'Software Development Engineer Intern', 
+      period: 'May 2024 – July 2024', 
+      location: 'New Delhi, India', 
+      description: 'Developed comprehensive data visualization tools and dashboards for the E-STEM project, supporting government skill development programs and initiatives.', 
+      achievements: [
+        'Built interactive E-STEM project dashboards with real-time analytics',
+        'Integrated DDU-GKY (Deen Dayal Upadhyaya Grameen Kaushalya Yojana) data systems',
+      ] 
+    },
+  ], []);
 
-  const extracurriculars = [
-    "Secretary General, VR & Game Dev Club (2023–Present)",
-    "PR Lead, IEEE Student Branch (2022–2023)",
-    "Organizer, ASET Freshers (2024)",
-    "Amity Youth Fest Organizer (2023)",
-    "CyberHack Participant (2024)"
-  ];
+  const education = useMemo(() => [
+    { 
+      institution: 'Amity University', 
+      degree: 'Bachelor of Technology in Computer Science & Engineering', 
+      period: '2021 – 2025',
+      details: 'Specialization in CSE '
+    },
+    { 
+      institution: 'MBS International School', 
+      degree: 'Class XII (CBSE Board)', 
+      period: '2020 – 2021',
+      details: 'Science Stream with Mathematics and Computer Science'
+    },
+    { 
+      institution: 'Vishwa Bharati School', 
+      degree: 'Class X (CBSE Board)', 
+      period: '2018 – 2019',
+      details: 'All India Secondary School Examination'
+    },
+  ], []);
 
-  const certificates = [
-    { title: "NPTEL: Python for Data Science", image: '#' },
-    { title: "AWS: Cloud Practitioner", image: '#' },
-    { title: "IBM: AI Fundamentals", image: '#' },
-    { title: "Google Cloud: Vertex AI", image: '#' }
-  ];
+  const extracurriculars = useMemo(() => [
+    'Secretary General, VR & Game Development Club (2024 – 2025)',
+    'Public Relations Lead, IEEE Student Branch (2022 – 2023)',
+    'Event Organizer, ASET Freshers Welcome (2024)',
+    'Core Team Member, Amity Youth Festival (2023)',
+    'Organizer, CyberCup Hackathon (2024)',
+    'Volunteer, Technical Symposium and Workshops'
+  ], []);
 
-  const lottieOptions = {
+  const certificates = useMemo(() => [
+    { title: 'NPTEL Certification: Python for Data Science' },
+    { title: 'AWS Certified Cloud Practitioner' },
+    { title: 'IBM AI Fundamentals Certification' },
+    { title: 'Google Cloud: Vertex AI Specialization' },
+  ], []);
+
+  const lottieOptions = useMemo(() => ({
     animationData: coderAnimation,
     loop: true,
     autoplay: true,
-    rendererSettings: { preserveAspectRatio: 'xMidYMid slice' }
+    rendererSettings: { 
+      preserveAspectRatio: 'xMidYMid slice'
+    },
+  }), []);
+
+  const fadeInUp = {
+    initial: { opacity: 0, y: 60 },
+    animate: { opacity: 1, y: 0 },
+    transition: { duration: 0.8, ease: 'easeOut' }
+  };
+
+  const staggerContainer = {
+    animate: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
   };
 
   return (
     <>
-      <div 
-        className="cursor-effect"
-        style={{ left: mousePos.x - 20, top: mousePos.y - 20 }}
-        aria-hidden="true"
-      />
       <MyNavbar />
-      <div className="app" style={{ paddingTop: '80px' }}>
-        <div className="floating-elements">
-          <div className="floating-element floating-element-1"></div>
-          <div className="floating-element floating-element-2"></div>
-          <div className="floating-element floating-element-3"></div>
-        </div>
+      <div className="app">
+        <div className="glass-background" />
+        <div id="particles-js" className="particles"></div>
 
-        <section id="hero" className="hero-section">
-          <div className="hero-background-overlay"></div>
+        <section id="hero" className="hero-section" role="banner">
           <div className="container">
-            <div className="row align-items-center min-vh-100">
+            <div className="row align-items-center">
               <div className="col-lg-6">
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
+                  className="hero-content"
+                  initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: 0.8, ease: 'easeOut' }}
                 >
-                  <div className="hero-badge">👋 Welcome</div>
-                  <h1 className="hero-title">
-                    I'm <span className="gradient-text">Priyanshu Shakya</span>
-                  </h1>
-                  <p className="hero-subtitle">CS Engineer & AI Innovator</p>
+                  <h1 className="hero-title">Priyanshu Shakya</h1>
+                  <TypeAnimation
+                    sequence={[
+                      'Computer Science Engineer', 2000,
+                      'AI/ML Innovator', 2000, 
+                      'Full-Stack Developer', 2000,
+                      'Tech Enthusiast', 2000
+                    ]}
+                    wrapper="p"
+                    repeat={Infinity}
+                    className="hero-subtitle"
+                  />
                   <p className="hero-description">
-                    Building cutting-edge software and pushing AI boundaries with creativity and precision.
+                    Passionate about crafting innovative AI solutions and modern web applications 
+                    that solve real-world problems with cutting-edge technology and user-centric design.
                   </p>
                   <div className="hero-buttons">
-                    <a href="#contact" className="btn btn-primary">Contact Me</a>
-                    <a href="#projects" className="btn btn-glass">Explore Projects</a>
-                  </div>
-                  <div className="hero-stats">
-                    <div className="stat-item">
-                      <span className="stat-number">3+</span>
-                      <span className="stat-label">Projects</span>
-                    </div>
-                    <div className="stat-item">
-                      <span className="stat-number">1+</span>
-                      <span className="stat-label">Years Exp</span>
-                    </div>
-                    <div className="stat-item">
-                      <span className="stat-number">4+</span>
-                      <span className="stat-label">Certifications</span>
-                    </div>
+                    <a href="#projects" className="btn btn-primary">
+                      <FaExternalLinkAlt className="me-2" />
+                      View My Work
+                    </a>
+                    <a href="#contact" className="btn btn-glass">
+                      <FaEnvelope className="me-2" />
+                      Get In Touch
+                    </a>
                   </div>
                 </motion.div>
               </div>
               <div className="col-lg-6">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
                   className="hero-animation-container"
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
                 >
-                  <div className="animation-backdrop"></div>
-                  <Lottie options={lottieOptions} height={400} style={{ zIndex: 2 }} />
+                  <Lottie options={lottieOptions} height={400} width={400} />
                 </motion.div>
               </div>
             </div>
           </div>
         </section>
 
-        <section id="about" className="section">
+        <section id="about" className="section glass-section">
           <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="section-title">
-                <span className="title-number">01.</span>About
-              </h2>
-              <div className="about-card">
+            <motion.div {...fadeInUp}>
+              <h2 className="section-title">About Me</h2>
+              <div className="glass-card about-card">
                 <p className="about-lead">
-                  Passionate CS student at Amity University, building impactful tech solutions.
+                  A passionate Computer Science Engineer specializing in AI/ML and Full-Stack Development
                 </p>
                 <p className="about-text">
-                  From AI-driven healthcare to scalable web apps, I thrive on solving real-world problems. 
-                  My internship at HardShell Technologies refined my skills in data-driven development.
-                </p>
-                <p className="about-text">
-                  I focus on clean code, intuitive UX, and innovative solutions, always eager to learn and grow.
+                  With a strong foundation in artificial intelligence, machine learning, and modern web technologies, 
+                  I create innovative solutions that bridge the gap between cutting-edge technology and real-world applications. 
+                  My experience spans from developing AI-powered diagnostic systems to building scalable web applications, 
+                  always with a focus on user experience and technical excellence.
                 </p>
               </div>
             </motion.div>
@@ -182,313 +415,169 @@ const App = () => {
 
         <section id="skills" className="section">
           <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="section-title">
-                <span className="title-number">02.</span>Skills
-              </h2>
-              <div className="skills-grid">
-                {skills.map((skill, i) => (
-                  <motion.div 
-                    key={i} 
-                    className="skill-card"
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <div className="skill-header">
-                      <h4 className="skill-category">{skill.category}</h4>
-                      <div className="skill-icon">
-                        <i className={`fas fa-${i === 0 ? 'code' : i === 1 ? 'laptop-code' : i === 2 ? 'tools' : 'cloud'}`} />
-                      </div>
-                    </div>
+            <motion.div {...fadeInUp}>
+              <h2 className="section-title">Technical Skills</h2>
+              <motion.div className="skills-grid" {...staggerContainer}>
+                {skills.map((skillGroup, index) => (
+                  <motion.div key={index} className="glass-card" {...fadeInUp}>
+                    <h3 className="skill-category">{skillGroup.category}</h3>
                     <div className="skill-tags">
-                      {skill.items.map((item, j) => (
-                        <span key={j} className="skill-tag">{item}</span>
+                      {skillGroup.items.map((skill, skillIndex) => (
+                        <span key={skillIndex} className="skill-tag">
+                          {skill.icon && <span className="skill-icon">{skill.icon}</span>}
+                          {skill.name}
+                        </span>
                       ))}
                     </div>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section id="projects" className="section glass-section">
+          <div className="container">
+            <motion.div {...fadeInUp}>
+              <h2 className="section-title">Featured Projects</h2>
+              <motion.div className="projects-grid" {...staggerContainer}>
+                {projects.map((project, index) => (
+                  <motion.div key={index} className="glass-card" {...fadeInUp}>
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-period">{project.period}</p>
+                    <p className="project-description">{project.description}</p>
+                    <div className="project-tech">
+                      {project.tech.map((tech, techIndex) => (
+                        <span key={techIndex} className="tech-tag">
+                          {tech.icon && <span className="skill-icon">{tech.icon}</span>}
+                          {tech.name}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="project-highlights">
+                      {project.highlights.map((highlight, highlightIndex) => (
+                        <div key={highlightIndex} className="highlight-item">
+                          {highlight}
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </motion.div>
             </motion.div>
           </div>
         </section>
 
         <section id="experience" className="section">
           <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="section-title">
-                <span className="title-number">03.</span>Experience
-              </h2>
-              <div className="experience-timeline">
-                {experiences.map((exp, i) => (
-                  <motion.div 
-                    key={i} 
-                    className="experience-item"
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="experience-marker"></div>
-                    <div className="experience-card">
-                      <div className="experience-header">
-                        <div>
-                          <h4 className="experience-role">{exp.role}</h4>
-                          <h5 className="experience-company">{exp.company}</h5>
-                        </div>
-                        <div className="experience-meta">
-                          <span className="experience-period">{exp.period}</span>
-                          <span className="experience-location">{exp.location}</span>
-                        </div>
-                      </div>
-                      <p className="experience-description">{exp.description}</p>
-                      <div className="experience-achievements">
-                        {exp.achievements.map((ach, j) => (
-                          <div key={j} className="achievement-item">
-                            <i className="fas fa-chevron-right"></i>
-                            <span>{ach}</span>
-                          </div>
-                        ))}
-                      </div>
+            <motion.div {...fadeInUp}>
+              <h2 className="section-title">Professional Experience</h2>
+              <motion.div className="experience-grid" {...staggerContainer}>
+                {experiences.map((experience, index) => (
+                  <motion.div key={index} className="glass-card" {...fadeInUp}>
+                    <div className="experience-company">{experience.company}</div>
+                    <h3 className="experience-role">{experience.role}</h3>
+                    <div className="experience-meta">
+                      <span>{experience.period}</span>
+                      <span>•</span>
+                      <span>{experience.location}</span>
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        <section id="projects" className="section">
-          <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="section-title">
-                <span className="title-number">04.</span>Projects
-              </h2>
-              <div className="projects-grid">
-                {projects.map((proj, i) => (
-                  <motion.div 
-                    key={i} 
-                    className="project-card"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="project-number">{String(i + 1).padStart(2, '0')}</div>
-                    <div className="project-header">
-                      <h4 className="project-title">{proj.title}</h4>
-                      <span className="project-period">{proj.period}</span>
-                    </div>
-                    <p className="project-description">{proj.description}</p>
-                    <div className="project-tech">
-                      {proj.tech.map((item, j) => (
-                        <span key={j} className="tech-tag">{item}</span>
-                      ))}
-                    </div>
-                    <div className="project-highlights">
-                      {proj.highlights.map((hl, j) => (
-                        <div key={j} className="highlight-item">
-                          <i className="fas fa-star"></i>
-                          <span>{hl}</span>
+                    <p className="experience-description">{experience.description}</p>
+                    <div className="experience-achievements">
+                      {experience.achievements.map((achievement, achievementIndex) => (
+                        <div key={achievementIndex} className="achievement-item">
+                          {achievement}
                         </div>
                       ))}
                     </div>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </section>
 
-        <section id="education" className="section">
+        <section id="education" className="section glass-section">
           <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="section-title">
-                <span className="title-number">05.</span>Education
-              </h2>
-              <div className="education-timeline">
-                {education.map((edu, i) => (
-                  <motion.div 
-                    key={i} 
-                    className="education-item"
-                    initial={{ opacity: 0, x: i % 2 ? 20 : -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="education-marker"></div>
-                    <div className="education-card">
-                      <h4 className="education-institution">{edu.institution}</h4>
-                      <h5 className="education-degree">{edu.degree}</h5>
-                      <span className="education-period">{edu.period}</span>
-                    </div>
+            <motion.div {...fadeInUp}>
+              <h2 className="section-title">Education</h2>
+              <motion.div className="education-grid" {...staggerContainer}>
+                {education.map((edu, index) => (
+                  <motion.div key={index} className="glass-card" {...fadeInUp}>
+                    <h3 className="education-institution">{edu.institution}</h3>
+                    <div className="education-degree">{edu.degree}</div>
+                    <p className="education-period">{edu.period}</p>
+                    <p className="project-description">{edu.details}</p>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </section>
 
-        <section id="certifications" className="section">
+        <section id="certificates" className="section">
           <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="section-title">
-                <span className="title-number">06.</span>Certifications
-              </h2>
-              <div className="certificates-grid">
-                {certificates.map((cert, i) => (
-                  <motion.div 
-                    key={i} 
-                    className="certificate-card"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.5, delay: i * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="certificate-image">
-                      <div className="certificate-overlay">
-                        <i className="fas fa-certificate"></i>
-                      </div>
-                    </div>
-                    <h5 className="certificate-title">{cert.title}</h5>
+            <motion.div {...fadeInUp}>
+              <h2 className="section-title">Certifications</h2>
+              <motion.div className="certificates-grid" {...staggerContainer}>
+                {certificates.map((cert, index) => (
+                  <motion.div key={index} className="glass-card" {...fadeInUp}>
+                    <h4 className="certificate-title">{cert.title}</h4>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </section>
 
-        <section id="extracurriculars" className="section">
+        <section id="activities" className="section glass-section">
           <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="section-title">
-                <span className="title-number">07.</span>Activities
-              </h2>
-              <div className="activities-grid">
-                {extracurriculars.map((act, i) => (
-                  <motion.div 
-                    key={i} 
-                    className="activity-card"
-                    initial={{ opacity: 0, y: 10 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.4, delay: i * 0.1 }}
-                    viewport={{ once: true }}
-                  >
-                    <div className="activity-icon">
-                      <i className="fas fa-trophy"></i>
-                    </div>
-                    <span className="activity-text">{act}</span>
+            <motion.div {...fadeInUp}>
+              <h2 className="section-title">Extracurricular Activities</h2>
+              <motion.div className="activities-grid" {...staggerContainer}>
+                {extracurriculars.map((activity, index) => (
+                  <motion.div key={index} className="glass-card" {...fadeInUp}>
+                    <p className="activity-text">{activity}</p>
                   </motion.div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
           </div>
         </section>
 
-        <section id="contact" className="section contact-section">
+        <section id="contact" className="section">
           <div className="container">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="section-title">
-                <span className="title-number">08.</span>Contact
-              </h2>
-              <div className="row justify-content-center">
-                <div className="col-lg-8">
-                  <p className="contact-lead">
-                    Let's collaborate on innovative projects or discuss tech possibilities!
-                  </p>
-                  <div className="contact-cards">
-                    <motion.div className="contact-card" whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
-                      <div className="contact-icon">
-                        <i className="fas fa-envelope"></i>
-                      </div>
-                      <div className="contact-info">
-                        <h5>Email</h5>
-                        <a href="mailto:priyanshushakya.work@gmail.com">priyanshushakya.work@gmail.com</a>
-                      </div>
-                    </motion.div>
-                    <motion.div className="contact-card" whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
-                      <div className="contact-icon">
-                        <i className="fas fa-phone"></i>
-                      </div>
-                      <div className="contact-info">
-                        <h5>Phone</h5>
-                        <a href="tel:+919821567780">+91-9821567780</a>
-                      </div>
-                    </motion.div>
-                    <motion.div className="contact-card" whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
-                      <div className="contact-icon">
-                        <i className="fas fa-map-marker-alt"></i>
-                      </div>
-                      <div className="contact-info">
-                        <h5>Location</h5>
-                        <span>New Delhi, India</span>
-                      </div>
-                    </motion.div>
-                  </div>
-                  <div className="social-section">
-                    <h4>Connect</h4>
-                    <div className="social-links">
-                      <motion.a 
-                        href="https://linkedin.com/in/priyanshu-shakya-129455246" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="social-link"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <i className="fab fa-linkedin"></i>
-                        LinkedIn
-                      </motion.a>
-                      <motion.a 
-                        href="https://github.com/priyanshu-shakya" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="social-link"
-                        whileHover={{ scale: 1.05 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <i className="fab fa-github"></i>
-                        GitHub
-                      </motion.a>
-                    </div>
-                  </div>
+            <motion.div {...fadeInUp}>
+              <h2 className="section-title">Get In Touch</h2>
+              <p className="contact-grid">
+                
+              </p>
+              <motion.div className="contact-grid" {...staggerContainer}>
+                <motion.div className="glass-card contact-info" {...fadeInUp}>
+                  <h5><FaEnvelope className="me-2" />Email</h5>
+                  <a href="mailto:priyanshu.shakya@example.com">priyanshu.shakya@example.com</a>
+                </motion.div>
+                <motion.div className="glass-card contact-info" {...fadeInUp}>
+                  <h5><FaPhone className="me-2" />Phone</h5>
+                  <span>+91 12345 67890</span>
+                </motion.div>
+                <motion.div className="glass-card contact-info" {...fadeInUp}>
+                  <h5><FaMapMarkerAlt className="me-2" />Location</h5>
+                  <span>New Delhi, India</span>
+                </motion.div>
+              </motion.div>
+
+              <div className="social-section">
+                <h4>Connect With Me</h4>
+                <div className="social-links">
+                  <a href="https://linkedin.com/in/priyanshu-shakya" className="social-link glass-card">
+                    <FaLinkedin className="social-icon" />
+                    LinkedIn
+                  </a>
+                  <a href="https://github.com/priyanshu-shakya" className="social-link glass-card">
+                    <FaGithub className="social-icon" />
+                    GitHub
+                  </a>
                 </div>
               </div>
             </motion.div>
@@ -497,14 +586,7 @@ const App = () => {
 
         <footer className="footer">
           <div className="container">
-            <div className="footer-content">
-              <div className="footer-text">
-                <p>© 2025 Priyanshu Shakya. Built with React & Passion.</p>
-              </div>
-              <div className="footer-links">
-                <a href="#hero">Top</a>
-              </div>
-            </div>
+            <p> </p>
           </div>
         </footer>
       </div>

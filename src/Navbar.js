@@ -65,7 +65,7 @@ export default function MyNavbar() {
       <style jsx>{`
         .custom-navbar {
           background: linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(20, 20, 40, 0.2)) !important;
-          backdrop-filter: blur(12px);
+          backdrop-filter: blur(3px);
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
           transition: all 0.3s ease;
           padding: 0.75rem 0;
