@@ -570,11 +570,11 @@ const App = () => {
               <div className="social-section">
                 <h4>Connect With Me</h4>
                 <div className="social-links">
-                  <a href="https://linkedin.com/in/priyanshu-shakya" className="social-link glass-card">
+                  <a href="https://www.linkedin.com/in/priyanshu-shakya-129455246/" className="social-link glass-card">
                     <FaLinkedin className="social-icon" />
                     LinkedIn
                   </a>
-                  <a href="https://github.com/priyanshu-shakya" className="social-link glass-card">
+                  <a href="https://github.com/Priyanshu261202" className="social-link glass-card">
                     <FaGithub className="social-icon" />
                     GitHub
                   </a>
