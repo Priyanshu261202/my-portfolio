@@ -6,7 +6,7 @@ import Lottie from 'react-lottie';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FaLinkedin, FaGithub, FaPython, FaReact, FaJava, FaAws, FaHtml5, FaCss3Alt, FaJs, FaGitAlt, FaFigma, FaDatabase, FaEnvelope, FaPhone, FaMapMarkerAlt, FaExternalLinkAlt } from 'react-icons/fa';
-import { SiTensorflow, SiFlask, SiScikitlearn, SiPandas } from 'react-icons/si';
+import { SiTensorflow, SiFlask, SiScikitlearn, SiPandas, SiGooglecloud, FaNodejs, SiAutocad } from 'react-icons/si';
 import coderAnimation from './assets/coder.json';
 
 const App = () => {
