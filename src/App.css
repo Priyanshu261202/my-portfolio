@@ -149,7 +149,7 @@ body {
 
 .btn {
   padding: 0.8rem 1.8rem;
-  border-radius: 10px;
+  border-radius: 20px;
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
@@ -379,7 +379,7 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   text-align: center;
-  text-shadow: 0 0 0px var(--particle-glow);
+  text-shadow: 0 0 5px var(--particle-glow);
 }
 
 .activity-text {
@@ -400,7 +400,7 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.6rem;
-  text-shadow: 0 0 10px var(--particle-glow);
+  text-shadow: 0 0 5px var(--particle-glow);
 }
 
 .contact-info a, .contact-info span {
