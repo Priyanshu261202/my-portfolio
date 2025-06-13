@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     let retries = 0;
     const maxRetries = 3;
-    const retryDelay = 1000; // 1 second
+    const retryDelay = 1000; 
 
     const initParticles = () => {
       if (window.particlesJS) {
@@ -21,7 +21,7 @@ const App = () => {
         window.particlesJS('particles-js', {
           particles: {
             number: {
-              value: 80,
+              value: 85,
               density: {
                 enable: true,
                 value_area: 800
@@ -66,7 +66,7 @@ const App = () => {
             },
             move: {
               enable: true,
-              speed: 3,
+              speed: 2,
               direction: "none",
               random: false,
               straight: false,
@@ -179,7 +179,8 @@ const App = () => {
     { 
       category: 'Web Development', 
       items: [
-        { name: 'React', icon: <FaReact /> }, 
+        { name: 'React', icon: <FaReact /> },
+         { name: 'Node.js', icon: <FaNodejs /> },
         { name: 'Flask', icon: <SiFlask /> }, 
         { name: 'HTML5', icon: <FaHtml5 /> }, 
         { name: 'CSS3', icon: <FaCss3Alt /> }, 
@@ -192,6 +193,7 @@ const App = () => {
         { name: 'VS Code', icon: null }, 
         { name: 'Git', icon: <FaGitAlt /> }, 
         { name: 'GitHub', icon: <FaGithub /> }, 
+        { name: 'AutoCAD', icon: <SiAutocad /> },
         { name: 'Figma', icon: <FaFigma /> }
       ] 
     },
@@ -199,6 +201,7 @@ const App = () => {
       category: 'Cloud & AI Technologies', 
       items: [
         { name: 'AWS', icon: <FaAws /> }, 
+         { name: 'Vertex AI', icon: <SiGooglecloud /> }, 
         { name: 'TensorFlow', icon: <SiTensorflow /> }, 
         { name: 'Scikit-learn', icon: <SiScikitlearn /> }, 
         { name: 'Pandas', icon: <SiPandas /> }
@@ -215,13 +218,15 @@ const App = () => {
         { name: 'Python', icon: <FaPython /> }, 
         { name: 'Flask', icon: <SiFlask /> }, 
         { name: 'TensorFlow', icon: <SiTensorflow /> }, 
-        { name: 'React', icon: <FaReact /> }, 
-        { name: 'AWS', icon: <FaAws /> }
+        { name: 'HTML5', icon: <FaHtml5 /> }, 
+        { name: 'CSS3', icon: <FaCss3Alt /> }, 
+        { name: 'JavaScript', icon: <FaJs /> }
+        
       ], 
       highlights: [
         '95%+ model accuracy with advanced CNN architecture',
         'Real-time CT scan analysis and diagnosis',
-        'Scalable cloud deployment on AWS infrastructure',
+        'Integrated AI ChatBot',
         'Responsive UI with interactive visualizations'
       ] 
     },
@@ -239,7 +244,7 @@ const App = () => {
         'Real-time order dashboards with live updates',
         'QR code menu integration for contactless ordering',
         'Multi-role user management system',
-        'Cloud hosting on AWS with high availability'
+       
       ] 
     },
     { 
@@ -289,7 +294,7 @@ const App = () => {
       details: 'Science Stream with Mathematics and Computer Science'
     },
     { 
-      institution: 'Vishwa Bharati School', 
+      institution: 'Vishwa Bharati Public School', 
       degree: 'Class X (CBSE Board)', 
       period: '2018 – 2019',
       details: 'All India Secondary School Examination'
@@ -400,7 +405,7 @@ const App = () => {
               <h2 className="section-title">About Me</h2>
               <div className="glass-card about-card">
                 <p className="about-lead">
-                  A passionate Computer Science Engineer specializing in AI/ML and Full-Stack Development
+                  A passionate Computer Science Engineer specializing in Data, Full-Stack Development and AI/ML
                 </p>
                 <p className="about-text">
                 Hi, I’m a final-year B.Tech Computer Science student with a passion for building smart, user-focused digital solutions. With hands-on experience in full-stack development and machine learning, I’ve worked on projects ranging from intelligent health systems to interactive web applications. I thrive on solving real-world problems through clean, efficient code and a deep understanding of both data and design.
@@ -583,7 +588,7 @@ const App = () => {
 
         <footer className="footer">
           <div className="container">
-            <p>  </p>
+            <p> Thank you for stopping by — feel free to connect! </p>
           </div>
         </footer>
       </div>
