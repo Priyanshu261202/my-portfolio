@@ -73,7 +73,7 @@ export default function MyNavbar() {
         }
         
         .custom-navbar.scrolled {
-          background: linear-gradient(135deg, rgba(0, 0, 20, 0.9), rgba(20, 0, 40, 0.9)) !important;
+          background: linear-gradient(135deg, rgba(0, 0, 20, 0.51), rgba(20, 0, 40, 0.44)) !important;
           padding: 0.5rem 0;
           box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
         }
@@ -137,7 +137,7 @@ export default function MyNavbar() {
         .custom-toggler {
           border: none;
           padding: 6px 10px;
-          background: rgba(255, 255, 255, 0.15);
+          background:rgba(255, 0, 123, 0.26);
           border-radius: 10px;
         }
         
