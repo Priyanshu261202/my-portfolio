@@ -269,7 +269,7 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.8rem;
-  text-shadow: 0 0 10px var(--particle-glow);
+  text-shadow: 0 0 0px var(--particle-glow);
 }
 
 .skill-tags {
@@ -297,7 +297,7 @@ body {
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   color: var(--bg-primary);
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 12px var(--particle-glow);
+  box-shadow: 0 0 5px var(--particle-glow);
   font-weight: 600;
 }
 
@@ -310,7 +310,7 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.6rem;
-  text-shadow: 0 0 10px var(--particle-glow);
+  text-shadow: 0 0 0px var(--particle-glow);
 }
 
 .project-period, .experience-meta, .education-period {
@@ -359,7 +359,7 @@ body {
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--primary-color);
-  text-shadow: 0 0 10px var(--particle-glow);
+  text-shadow: 0 0 0px var(--particle-glow);
 }
 
 .experience-meta {
@@ -379,7 +379,7 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   text-align: center;
-  text-shadow: 0 0 10px var(--particle-glow);
+  text-shadow: 0 0 0px var(--particle-glow);
 }
 
 .activity-text {
@@ -412,7 +412,7 @@ body {
 
 .contact-info a:hover, .contact-info a:active {
   color: var(--primary-color);
-  text-shadow: 0 0 10px var(--particle-glow);
+  text-shadow: 0 0 0px var(--particle-glow);
 }
 
 .social-section {
@@ -425,7 +425,7 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 1.2rem;
-  text-shadow: 0 0 10px var(--particle-glow);
+  text-shadow: 0 0 0px var(--particle-glow);
 }
 
 .social-links {
@@ -451,7 +451,7 @@ body {
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   color: var(--bg-primary);
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 15px var(--particle-glow);
+  box-shadow: 0 0 5px var(--particle-glow);
   font-weight: 600;
 }
 
