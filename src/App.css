@@ -1,22 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --primary-color: #ff007a;
-  --secondary-color: #00ddeb;
-  --accent-color: #00ff8800;
+  --primary-color: #7b1fa2;
+  --secondary-color: #ff6f00;
+  --accent-color: #00e676;
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.85);
   --text-tertiary: rgba(255, 255, 255, 0.6);
-  --bg-primary: rgb(36, 0, 25);
-  --bg-secondary: rgb(0, 22, 14);
+  --bg-primary: rgb(16, 0, 20);
+  --bg-secondary: rgb(24, 12, 0);
   --glass-bg: rgba(46, 47, 46, 0.1);
   --glass-border: rgba(12, 32, 0, 0.474);
-  --glass-blur: blur(5px);
+  --glass-blur: blur(3px);
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.51);
   --shadow-glow: 0 0 5px rgba(13, 255, 0, 0.185);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --particle-glow: rgba(81, 255, 0, 0.5);
-  --particles-glow: rgba(81, 255, 0, 0.027);
+  --particle-glow: rgba(123, 31, 162, 0.5);
+  --particles-glow: rgba(123, 31, 162, 0.027);
 }
 
 * {
