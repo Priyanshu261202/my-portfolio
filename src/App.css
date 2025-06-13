@@ -7,7 +7,7 @@
   --text-primary: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.85);
   --text-tertiary: rgba(255, 255, 255, 0.6);
-  --bg-primary: rgb(33, 0, 36);
+  --bg-primary: rgb(36, 0, 25);
   --bg-secondary: rgb(0, 30, 19);
   --glass-bg: rgba(46, 47, 46, 0.1);
   --glass-border: rgba(12, 32, 0, 0.474);
@@ -88,7 +88,7 @@ body {
 
 .section-title {
   font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-  font-weight: 700;
+  font-weight: 1000;
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -96,7 +96,7 @@ body {
   text-align: center;
   margin-bottom: 2.5rem;
   text-shadow: 0 0 30px var(--particles-glow);
-  animation: pulseText 2s infinite ease-in-out;
+  animation: pulseText 5s infinite ease-in-out;
 }
 
 @keyframes pulseText {
@@ -108,7 +108,7 @@ body {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 80px 0;
+  padding: 120px 0 80px 0;
   position: relative;
 }
 
@@ -165,26 +165,26 @@ body {
 .btn-primary {
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   color: var(--text-primary);
-  box-shadow: 0 0 10px var(--primary-color);
+  box-shadow: 0 0 0px var(--primary-color);
   font-weight: 700;
 }
 
 .btn-primary:hover, .btn-primary:active {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 20px var(--particle-glow);
+  box-shadow: 0 0 10px var(--primary-color);
   filter: brightness(1.1);
 }
 
 .btn-glass {
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   color: var(--text-primary);
-  box-shadow: 0 0 10px var(--primary-color);
+  box-shadow: 0 0 0px var(--primary-color);
   font-weight: 700;
 }
 
 .btn-glass:hover, .btn-glass:active {
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 20px var(--shadow-glow);
+  box-shadow: 0 0 10px var(--primary-color);
   border-color: var(--primary-color);
 }
 
