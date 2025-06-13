@@ -311,10 +311,11 @@ const App = () => {
   ], []);
 
   const certificates = useMemo(() => [
-    { title: 'NPTEL Certification: Python for Data Science' },
+    { title: 'IIT Madras: Python for Data Science' },
     { title: 'AWS Certified Cloud Practitioner' },
-    { title: 'IBM AI Fundamentals Certification' },
+    { title: 'IBM Data Fundamentals Certification' },
     { title: 'Google Cloud: Vertex AI Specialization' },
+    { title: 'IIT Madras: Economics Of Innovation' },
   ], []);
 
   const lottieOptions = useMemo(() => ({
