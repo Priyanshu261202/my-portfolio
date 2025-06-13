@@ -403,10 +403,7 @@ const App = () => {
                   A passionate Computer Science Engineer specializing in AI/ML and Full-Stack Development
                 </p>
                 <p className="about-text">
-                  With a strong foundation in artificial intelligence, machine learning, and modern web technologies, 
-                  I create innovative solutions that bridge the gap between cutting-edge technology and real-world applications. 
-                  My experience spans from developing AI-powered diagnostic systems to building scalable web applications, 
-                  always with a focus on user experience and technical excellence.
+                Hi, I’m a final-year B.Tech Computer Science student with a passion for building smart, user-focused digital solutions. With hands-on experience in full-stack development and machine learning, I’ve worked on projects ranging from intelligent health systems to interactive web applications. I thrive on solving real-world problems through clean, efficient code and a deep understanding of both data and design.
                 </p>
               </div>
             </motion.div>
@@ -586,7 +583,7 @@ const App = () => {
 
         <footer className="footer">
           <div className="container">
-            <p> </p>
+            <p>  </p>
           </div>
         </footer>
       </div>
