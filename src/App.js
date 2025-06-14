@@ -28,7 +28,7 @@ const App = () => {
               }
             },
             color: {
-              value: "#4fff00"
+              value: "#B6F500"
             },
             shape: {
               type: "circle",
@@ -60,7 +60,7 @@ const App = () => {
             line_linked: {
               enable: true,
               distance: 150,
-              color: "#6fff7e",
+              color: "#B6F500",
               opacity: 0.4,
               width: 1
             },
