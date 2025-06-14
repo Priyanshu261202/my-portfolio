@@ -6,7 +6,7 @@ import Lottie from 'react-lottie';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FaLinkedin, FaGithub, FaPython, FaReact, FaJava, FaAws, FaHtml5, FaCss3Alt, FaJs, FaGitAlt, FaFigma, FaDatabase, FaEnvelope, FaPhone, FaMapMarkerAlt, FaExternalLinkAlt } from 'react-icons/fa';
-import { SiTensorflow, SiFlask, SiScikitlearn, SiPandas, SiGooglecloud, SiAutocad } from 'react-icons/si';
+import { SiTensorflow, SiFlask, SiScikitlearn, SiPandas, SiGooglecloud, SiGooglebigquery, SiOracle, SiAutocad } from 'react-icons/si';
 import coderAnimation from './assets/coder.json';
 
 const App = () => {
@@ -170,17 +170,17 @@ const App = () => {
     { 
       category: 'Programming Languages', 
       items: [
-        { name: 'C++', icon: <FaJava /> }, 
-        { name: 'Java', icon: <FaJava /> }, 
         { name: 'Python', icon: <FaPython /> }, 
-        { name: 'SQL', icon: <FaDatabase /> }
+        { name: 'SQL', icon: <FaDatabase /> },
+        { name: 'C++', icon: <FaJava /> }, 
+        { name: 'Java', icon: <FaJava /> } 
       ] 
     },
     { 
       category: 'Web Development', 
       items: [
         { name: 'React', icon: <FaReact /> },
-         { name: 'Node.js', icon: null },
+        { name: 'Node.js', icon: null },
         { name: 'Flask', icon: <SiFlask /> }, 
         { name: 'HTML5', icon: <FaHtml5 /> }, 
         { name: 'CSS3', icon: <FaCss3Alt /> }, 
@@ -192,7 +192,8 @@ const App = () => {
       items: [
         { name: 'VS Code', icon: null }, 
         { name: 'Git', icon: <FaGitAlt /> }, 
-        { name: 'GitHub', icon: <FaGithub /> }, 
+        { name: 'GitHub', icon: <FaGithub /> },
+        { name: 'Oracle', icon: <SiOracle /> },
         { name: 'AutoCAD', icon: <SiAutocad /> },
         { name: 'Figma', icon: <FaFigma /> }
       ] 
@@ -201,8 +202,9 @@ const App = () => {
       category: 'Cloud & AI Technologies', 
       items: [
         { name: 'AWS', icon: <FaAws /> }, 
-         { name: 'Vertex AI', icon: <SiGooglecloud /> }, 
-        { name: 'TensorFlow', icon: <SiTensorflow /> }, 
+        { name: 'Vertex AI', icon: <SiGooglecloud /> }, 
+        { name: 'TensorFlow', icon: <SiTensorflow /> },
+        { name: 'BigQuery', icon: <SiGooglebigquery /> },
         { name: 'Scikit-learn', icon: <SiScikitlearn /> }, 
         { name: 'Pandas', icon: <SiPandas /> }
       ] 
