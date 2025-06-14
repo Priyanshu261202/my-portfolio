@@ -12,7 +12,7 @@
   --glass-bg: rgba(46, 47, 46, 0.1);
   --glass-border: rgba(12, 32, 0, 0.474);
   --glass-blur: blur(3px);
-  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.51);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.619);
   --shadow-glow: 0 0 5px rgba(13, 255, 0, 0.185);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --particle-glow: rgba(123, 31, 162, 0.5);
@@ -82,7 +82,7 @@ body {
 .glass-section {
   border-top: 1px solid var(--glass-border);
   border-bottom: 1px solid var(--glass-border);
-  box-shadow: var(--shadow-glass);
+  
   margin: 20px 0;
 }
 
