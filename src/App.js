@@ -24,11 +24,11 @@ const App = () => {
               value: 90,
               density: {
                 enable: true,
-                value_area: 800
+                value_area: 900
               }
             },
             color: {
-              value: "#B6F500"
+              value: "#4fff00"
             },
             shape: {
               type: "circle",
@@ -60,7 +60,7 @@ const App = () => {
             line_linked: {
               enable: true,
               distance: 150,
-              color: "#B6F500",
+              color: "#4fff00",
               opacity: 0.4,
               width: 1
             },
