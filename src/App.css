@@ -652,8 +652,8 @@ body {
   }
 
   .hero-animation-container lottie-player {
-    height: 300px !important;
-    width: 300px !important;
+    height: 150px !important;
+    width: 150px !important;
   }
 
   .glass-card {
