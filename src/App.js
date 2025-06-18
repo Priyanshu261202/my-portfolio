@@ -266,6 +266,25 @@ const App = () => {
         'Feature importance analysis and optimization'
       ] 
     },
+    { 
+      title: 'Tangy Tales: FullStack E-Commerce for Pickles', 
+      period: 'March 2025', 
+      description: 'Full-stack e-commerce website for a homegrown pickle brand, featuring interactive UI, product catalog, and secure payment gateway integration.',
+      tech: [
+        { name: 'HTML', icon: <FaHtml5 /> },
+        { name: 'CSS', icon: <FaCss3Alt /> },
+        { name: 'JavaScript', icon: <FaJs /> },
+        { name: 'Flask', icon: <SiFlask /> },
+        
+      ],
+    highlights: [
+          'Seamless shopping experience with intuitive UI',
+          'Fully responsive design optimized for all devices',
+          'Interactive product gallery with high-quality visuals',
+          'Secure online payments using integrated gateway (Stripe)',
+          'Backend built with Flask to handle cart, orders, and admin features'
+      ]
+    },
   ], []);
 
   const experiences = useMemo(() => [
