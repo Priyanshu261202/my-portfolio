@@ -38,7 +38,7 @@ const App = () => {
               }
             },
             opacity: {
-              value: 0.7,
+              value: 0.5,
               random: false,
               anim: {
                 enable: false,
@@ -66,7 +66,7 @@ const App = () => {
             },
             move: {
               enable: true,
-              speed: 6,
+              speed: 3,
               direction: "none",
               random: false,
               straight: false,
