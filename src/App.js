@@ -6,14 +6,14 @@ import Lottie from 'react-lottie';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FaLinkedin, FaGithub, FaPython, FaReact, FaJava, FaAws, FaHtml5, FaCss3Alt, FaJs, FaGitAlt, FaFigma, FaDatabase, FaEnvelope, FaPhone, FaMapMarkerAlt, FaExternalLinkAlt } from 'react-icons/fa';
-import { SiTensorflow, SiFlask, SiScikitlearn, SiPandas, SiGooglecloud, SiGooglebigquery, SiOracle, SiAutocad } from 'react-icons/si';
+import { SiTensorflow, SiFlask, SiScikitlearn, SiPandas } from 'react-icons/si';
 import coderAnimation from './assets/coder.json';
 
 const App = () => {
   useEffect(() => {
     let retries = 0;
     const maxRetries = 3;
-    const retryDelay = 1000; 
+    const retryDelay = 1000; // 1 second
 
     const initParticles = () => {
       if (window.particlesJS) {
@@ -24,21 +24,21 @@ const App = () => {
               value: 90,
               density: {
                 enable: true,
-                value_area: 900
+                value_area: 800
               }
             },
             color: {
-              value: "#4fff00"
+              value: "#1d1d1f"
             },
             shape: {
               type: "circle",
               stroke: {
                 width: 0,
-                color: "#000000"
+                color: "#1d1d1f"
               }
             },
             opacity: {
-              value: 0.7,
+              value: 1,
               random: false,
               anim: {
                 enable: false,
@@ -60,13 +60,13 @@ const App = () => {
             line_linked: {
               enable: true,
               distance: 150,
-              color: "#4fff00",
-              opacity: 0.4,
+              color: "#B6F500",
+              opacity: 0.7,
               width: 1
             },
             move: {
               enable: true,
-              speed: 2,
+              speed: 6,
               direction: "none",
               random: false,
               straight: false,
@@ -156,24 +156,6 @@ const App = () => {
       document.body.appendChild(script);
     }
 
-    // Intersection Observer for scroll animations
-const observerOptions = {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('animate');
-    }
-  });
-}, observerOptions);
-
-// Observe all animation elements
-document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-animation-right, .scroll-animation-scale, .scroll-animation-fade, .scroll-animation-stagger').forEach(el => {
-  observer.observe(el);
-});
     // Cleanup on unmount
     return () => {
       if (window.pJSDom && window.pJSDom[0]) {
@@ -188,17 +170,16 @@ document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-an
     { 
       category: 'Programming Languages', 
       items: [
-        { name: 'Python', icon: <FaPython /> }, 
-        { name: 'SQL', icon: <FaDatabase /> },
         { name: 'C++', icon: <FaJava /> }, 
-        { name: 'Java', icon: <FaJava /> } 
+        { name: 'Java', icon: <FaJava /> }, 
+        { name: 'Python', icon: <FaPython /> }, 
+        { name: 'SQL', icon: <FaDatabase /> }
       ] 
     },
     { 
       category: 'Web Development', 
       items: [
-        { name: 'React', icon: <FaReact /> },
-        { name: 'Node.js', icon: null },
+        { name: 'React', icon: <FaReact /> }, 
         { name: 'Flask', icon: <SiFlask /> }, 
         { name: 'HTML5', icon: <FaHtml5 /> }, 
         { name: 'CSS3', icon: <FaCss3Alt /> }, 
@@ -210,9 +191,7 @@ document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-an
       items: [
         { name: 'VS Code', icon: null }, 
         { name: 'Git', icon: <FaGitAlt /> }, 
-        { name: 'GitHub', icon: <FaGithub /> },
-        { name: 'Oracle', icon: <SiOracle /> },
-        { name: 'AutoCAD', icon: <SiAutocad /> },
+        { name: 'GitHub', icon: <FaGithub /> }, 
         { name: 'Figma', icon: <FaFigma /> }
       ] 
     },
@@ -220,9 +199,7 @@ document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-an
       category: 'Cloud & AI Technologies', 
       items: [
         { name: 'AWS', icon: <FaAws /> }, 
-        { name: 'Vertex AI', icon: <SiGooglecloud /> }, 
-        { name: 'TensorFlow', icon: <SiTensorflow /> },
-        { name: 'BigQuery', icon: <SiGooglebigquery /> },
+        { name: 'TensorFlow', icon: <SiTensorflow /> }, 
         { name: 'Scikit-learn', icon: <SiScikitlearn /> }, 
         { name: 'Pandas', icon: <SiPandas /> }
       ] 
@@ -238,15 +215,13 @@ document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-an
         { name: 'Python', icon: <FaPython /> }, 
         { name: 'Flask', icon: <SiFlask /> }, 
         { name: 'TensorFlow', icon: <SiTensorflow /> }, 
-        { name: 'HTML5', icon: <FaHtml5 /> }, 
-        { name: 'CSS3', icon: <FaCss3Alt /> }, 
-        { name: 'JavaScript', icon: <FaJs /> }
-        
+        { name: 'React', icon: <FaReact /> }, 
+        { name: 'AWS', icon: <FaAws /> }
       ], 
       highlights: [
         '95%+ model accuracy with advanced CNN architecture',
         'Real-time CT scan analysis and diagnosis',
-        'Integrated AI ChatBot',
+        'Scalable cloud deployment on AWS infrastructure',
         'Responsive UI with interactive visualizations'
       ] 
     },
@@ -264,7 +239,7 @@ document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-an
         'Real-time order dashboards with live updates',
         'QR code menu integration for contactless ordering',
         'Multi-role user management system',
-       
+        'Cloud hosting on AWS with high availability'
       ] 
     },
     { 
@@ -333,7 +308,7 @@ document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-an
       details: 'Science Stream with Mathematics and Computer Science'
     },
     { 
-      institution: 'Vishwa Bharati Public School', 
+      institution: 'Vishwa Bharati School', 
       degree: 'Class X (CBSE Board)', 
       period: '2018 – 2019',
       details: 'All India Secondary School Examination'
@@ -350,11 +325,10 @@ document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-an
   ], []);
 
   const certificates = useMemo(() => [
-    { title: 'IIT Madras: Python for Data Science' },
+    { title: 'NPTEL Certification: Python for Data Science' },
     { title: 'AWS Certified Cloud Practitioner' },
-    { title: 'IBM Data Fundamentals Certification' },
+    { title: 'IBM AI Fundamentals Certification' },
     { title: 'Google Cloud: Vertex AI Specialization' },
-    { title: 'IIT Madras: Economics Of Innovation' },
   ], []);
 
   const lottieOptions = useMemo(() => ({
@@ -397,7 +371,8 @@ document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-an
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, ease: 'easeOut' }}
                 >
-                  <h1 className="hero-title">Priyanshu Shakya</h1>
+                  <h1 className="hero-title">Priyanshu 
+                               Shakya</h1>
                   <TypeAnimation
                     sequence={[
                       'Computer Science Engineer', 2000,
@@ -445,10 +420,13 @@ document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-an
               <h2 className="section-title">About Me</h2>
               <div className="glass-card about-card">
                 <p className="about-lead">
-                  A passionate Computer Science Engineer specializing in Data, Full-Stack Development and AI/ML
+                  A passionate Computer Science Engineer specializing in AI/ML and Full-Stack Development
                 </p>
                 <p className="about-text">
-                Hi, I’m a final-year B.Tech Computer Science student with a passion for building smart, user-focused digital solutions. With hands-on experience in full-stack development and machine learning, I’ve worked on projects ranging from intelligent health systems to interactive web applications. I thrive on solving real-world problems through clean, efficient code and a deep understanding of both data and design.
+                  With a strong foundation in artificial intelligence, machine learning, and modern web technologies, 
+                  I create innovative solutions that bridge the gap between cutting-edge technology and real-world applications. 
+                  My experience spans from developing AI-powered diagnostic systems to building scalable web applications, 
+                  always with a focus on user experience and technical excellence.
                 </p>
               </div>
             </motion.div>
@@ -597,11 +575,11 @@ document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-an
               <motion.div className="contact-grid" {...staggerContainer}>
                 <motion.div className="glass-card contact-info" {...fadeInUp}>
                   <h5><FaEnvelope className="me-2" />Email</h5>
-                  <a href="mailto:priyanshushakya.work@gmail.com">priyanshushakya.work@gmail.com</a>
+                  <a href="mailto:priyanshu.shakya@example.com">priyanshu.shakya@example.com</a>
                 </motion.div>
                 <motion.div className="glass-card contact-info" {...fadeInUp}>
                   <h5><FaPhone className="me-2" />Phone</h5>
-                  <span>+91 9821567780</span>
+                  <span>+91 12345 67890</span>
                 </motion.div>
                 <motion.div className="glass-card contact-info" {...fadeInUp}>
                   <h5><FaMapMarkerAlt className="me-2" />Location</h5>
@@ -612,11 +590,11 @@ document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-an
               <div className="social-section">
                 <h4>Connect With Me</h4>
                 <div className="social-links">
-                  <a href="https://www.linkedin.com/in/priyanshu-shakya-129455246/" className="social-link glass-card">
+                  <a href="https://linkedin.com/in/priyanshu-shakya" className="social-link glass-card">
                     <FaLinkedin className="social-icon" />
                     LinkedIn
                   </a>
-                  <a href="https://github.com/Priyanshu261202" className="social-link glass-card">
+                  <a href="https://github.com/priyanshu-shakya" className="social-link glass-card">
                     <FaGithub className="social-icon" />
                     GitHub
                   </a>
@@ -628,7 +606,7 @@ document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-an
 
         <footer className="footer">
           <div className="container">
-            <p> Thank you for stopping by — feel free to connect! </p>
+            <p> </p>
           </div>
         </footer>
       </div>
