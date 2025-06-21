@@ -580,7 +580,7 @@ const App = () => {
                 </motion.div>
                 <motion.div className="glass-card contact-info" {...fadeInUp}>
                   <h5><FaPhone className="me-2" />Phone</h5>
-                  <span>"+91 98215*****"</span>
+                  <span>+91 98215*****</span>
                 </motion.div>
                 <motion.div className="glass-card contact-info" {...fadeInUp}>
                   <h5><FaMapMarkerAlt className="me-2" />Location</h5>
