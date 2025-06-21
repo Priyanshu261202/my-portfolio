@@ -285,7 +285,7 @@ const App = () => {
       company: 'HardShell Technologies', 
       role: 'Software Development Engineer Intern', 
       period: 'May 2024 – July 2024', 
-      location: 'New Delhi, India', 
+      location: 'Noida, India', 
       description: 'Developed comprehensive data visualization tools and dashboards for the E-STEM project, supporting government skill development programs and initiatives.', 
       achievements: [
         'Built interactive E-STEM project dashboards with real-time analytics',
@@ -325,10 +325,11 @@ const App = () => {
   ], []);
 
   const certificates = useMemo(() => [
-    { title: 'NPTEL Certification: Python for Data Science' },
-    { title: 'AWS Certified Cloud Practitioner' },
-    { title: 'IBM AI Fundamentals Certification' },
+    { title: 'IIT Madras: Python for Data Science ' },
+    { title: 'IBM: Data Fundamentals Certification' },
     { title: 'Google Cloud: Vertex AI Specialization' },
+    { title: 'Microsoft Power BI for Beginners' },
+    { title: 'IIT Madras: Economics of Innovation' },
   ], []);
 
   const lottieOptions = useMemo(() => ({
@@ -575,11 +576,11 @@ const App = () => {
               <motion.div className="contact-grid" {...staggerContainer}>
                 <motion.div className="glass-card contact-info" {...fadeInUp}>
                   <h5><FaEnvelope className="me-2" />Email</h5>
-                  <a href="mailto:priyanshu.shakya@example.com">priyanshu.shakya@example.com</a>
+                  <a href="mailto:priyanshushakya.work@gmail.com">priyanshu.shakya@example.com</a>
                 </motion.div>
                 <motion.div className="glass-card contact-info" {...fadeInUp}>
                   <h5><FaPhone className="me-2" />Phone</h5>
-                  <span>+91 12345 67890</span>
+                  <span>"+91 98215*****"</span>
                 </motion.div>
                 <motion.div className="glass-card contact-info" {...fadeInUp}>
                   <h5><FaMapMarkerAlt className="me-2" />Location</h5>
@@ -590,11 +591,11 @@ const App = () => {
               <div className="social-section">
                 <h4>Connect With Me</h4>
                 <div className="social-links">
-                  <a href="https://linkedin.com/in/priyanshu-shakya" className="social-link glass-card">
+                  <a href="https://www.linkedin.com/in/priyanshu-shakya-129455246/" className="social-link glass-card">
                     <FaLinkedin className="social-icon" />
                     LinkedIn
                   </a>
-                  <a href="https://github.com/priyanshu-shakya" className="social-link glass-card">
+                  <a href="https://github.com/Priyanshu261202" className="social-link glass-card">
                     <FaGithub className="social-icon" />
                     GitHub
                   </a>
@@ -606,7 +607,7 @@ const App = () => {
 
         <footer className="footer">
           <div className="container">
-            <p> </p>
+            <p> Thanks for stopping by — feel free to connect! </p>
           </div>
         </footer>
       </div>
