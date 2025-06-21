@@ -1,22 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --primary-color: #000000;
-  --secondary-color: #1d1d1f;
-  --accent-color: #424245;
-  --text-primary: #1d1d1f;
-  --text-secondary: rgba(29, 29, 31, 0.85);
-  --text-tertiary: rgba(29, 29, 31, 0.6);
-  --bg-primary: #fffadc53;
-  --bg-secondary: #ffffff;
-  --glass-bg: rgba(255, 255, 255, 0.25);
-  --glass-border: rgba(0, 0, 0, 0.1);
-  --glass-blur: blur(5px);
+  --primary-color: #7b1fa2;
+  --secondary-color: #ff6f00;
+  --accent-color: #00e676;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --text-tertiary: rgba(255, 255, 255, 0.6);
+  --bg-primary: rgb(16, 0, 20);
+  --bg-secondary: rgb(24, 12, 0);
+  --glass-bg: rgba(46, 47, 46, 0.1);
+  --glass-border: rgba(12, 32, 0, 0.474);
+  --glass-blur: blur(3px);
   --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.619);
-  --shadow-glow: 0 0 8px rgba(57, 57, 57, 0.755);
-  --transition-smooth: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --particle-glow: rgba(0, 0, 0, 0.08);
-  --particles-glow: rgba(0, 0, 0, 0.01);
+  --shadow-glow: 0 0 5px rgba(13, 255, 0, 0.185);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --particle-glow: rgba(123, 31, 162, 0.5);
+  --particles-glow: rgba(123, 31, 162, 0.027);
 }
 
 * {
@@ -31,7 +31,7 @@ html {
 }
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background: linear-gradient(135deg, var(--bg-primary), var(--bg-secondary));
   color: var(--text-primary);
   line-height: 1.6;
@@ -82,7 +82,7 @@ body {
 .glass-section {
   border-top: 1px solid var(--glass-border);
   border-bottom: 1px solid var(--glass-border);
-
+  
   margin: 20px 0;
 }
 
@@ -149,7 +149,7 @@ body {
 
 .btn {
   padding: 0.8rem 1.8rem;
-  border-radius: 10px;
+  border-radius: 20px;
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
@@ -167,7 +167,6 @@ body {
   color: var(--text-primary);
   box-shadow: 0 0 0px var(--primary-color);
   font-weight: 700;
-  outline: none;
 }
 
 .btn-primary:hover, .btn-primary:active {
@@ -181,7 +180,6 @@ body {
   color: var(--text-primary);
   box-shadow: 0 0 0px var(--primary-color);
   font-weight: 700;
-  outline: none;
 }
 
 .btn-glass:hover, .btn-glass:active {
@@ -202,7 +200,7 @@ body {
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border: 0.1px solid var(--glass-border);
-  border-radius: 25px;
+  border-radius: 16px;
   padding: 1.5rem;
   box-shadow: var(--shadow-glass);
   transition: var(--transition-smooth);
@@ -231,7 +229,7 @@ body {
 
 .glass-card:hover, .glass-card:active {
   transform: translateY(-3px) scale(1.02);
-  background: rgba(255, 255, 255, 0);
+  background: rgba(81, 255, 0, 0.04);
   border-color: var(--glass-border);
   box-shadow: 0 0 15px var(--shadow-glow);
 }
@@ -299,7 +297,7 @@ body {
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   color: var(--bg-primary);
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 12px var(--particle-glow);
+  box-shadow: 0 0 5px var(--particle-glow);
   font-weight: 600;
 }
 
@@ -312,7 +310,7 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.6rem;
-  text-shadow: 0 0 10px var(--particle-glow);
+  text-shadow: 0 0 0px var(--particle-glow);
 }
 
 .project-period, .experience-meta, .education-period {
@@ -361,7 +359,7 @@ body {
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--primary-color);
-  text-shadow: 0 0 10px var(--particle-glow);
+  text-shadow: 0 0 0px var(--particle-glow);
 }
 
 .experience-meta {
@@ -381,7 +379,7 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   text-align: center;
-  text-shadow: 0 0 10px var(--particle-glow);
+  text-shadow: 0 0 2px var(--particle-glow);
 }
 
 .activity-text {
@@ -402,7 +400,7 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 0.6rem;
-  text-shadow: 0 0 10px var(--particle-glow);
+  text-shadow: 0 0 2px var(--particle-glow);
 }
 
 .contact-info a, .contact-info span {
@@ -414,7 +412,7 @@ body {
 
 .contact-info a:hover, .contact-info a:active {
   color: var(--primary-color);
-  text-shadow: 0 0 10px var(--particle-glow);
+  text-shadow: 0 0 0px var(--particle-glow);
 }
 
 .social-section {
@@ -427,7 +425,7 @@ body {
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 1.2rem;
-  text-shadow: 0 0 10px var(--particle-glow);
+  text-shadow: 0 0 0px var(--particle-glow);
 }
 
 .social-links {
@@ -453,7 +451,7 @@ body {
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   color: var(--bg-primary);
   transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 0 15px var(--particle-glow);
+  box-shadow: 0 0 5px var(--particle-glow);
   font-weight: 600;
 }
 
@@ -524,7 +522,7 @@ body {
   .hero-section {
     text-align: center;
     min-height: 80vh;
-    padding: 90x 0 50px 0;
+    padding: 60px 0;
   }
 
   .hero-title {
@@ -638,7 +636,7 @@ body {
   }
 
   .hero-section {
-    padding: 50px 0;
+    padding: 110px 0 50px 0;
   }
 
   .hero-title {
@@ -654,8 +652,8 @@ body {
   }
 
   .hero-animation-container lottie-player {
-    height: 180px !important;
-    width: 180px !important;
+    height: 150px !important;
+    width: 150px !important;
   }
 
   .glass-card {
