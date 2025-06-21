@@ -21,24 +21,24 @@ const App = () => {
         window.particlesJS('particles-js', {
           particles: {
             number: {
-              value: 90,
+              value: 80,
               density: {
                 enable: true,
                 value_area: 800
               }
             },
             color: {
-              value: "#1d1d1f"
+              value: "#4fff00"
             },
             shape: {
               type: "circle",
               stroke: {
                 width: 0,
-                color: "#1d1d1f"
+                color: "#000000"
               }
             },
             opacity: {
-              value: 1,
+              value: 0.7,
               random: false,
               anim: {
                 enable: false,
@@ -60,8 +60,8 @@ const App = () => {
             line_linked: {
               enable: true,
               distance: 150,
-              color: "#B6F500",
-              opacity: 0.7,
+              color: "#6fff7e",
+              opacity: 0.4,
               width: 1
             },
             move: {
