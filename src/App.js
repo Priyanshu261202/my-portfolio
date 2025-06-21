@@ -156,6 +156,24 @@ const App = () => {
       document.body.appendChild(script);
     }
 
+    // Intersection Observer for scroll animations
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -50px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate');
+    }
+  });
+}, observerOptions);
+
+// Observe all animation elements
+document.querySelectorAll('.scroll-animation, .scroll-animation-left, .scroll-animation-right, .scroll-animation-scale, .scroll-animation-fade, .scroll-animation-stagger').forEach(el => {
+  observer.observe(el);
+});
     // Cleanup on unmount
     return () => {
       if (window.pJSDom && window.pJSDom[0]) {
