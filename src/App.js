@@ -24,7 +24,7 @@ const App = () => {
               value: 90,
               density: {
                 enable: true,
-                value_area: 800
+                value_area: 900
               }
             },
             color: {
@@ -42,7 +42,7 @@ const App = () => {
               random: false,
               anim: {
                 enable: false,
-                speed: 0.7,
+                speed: 0.2,
                 opacity_min: 0.1,
                 sync: false
               }
