@@ -21,7 +21,7 @@ const App = () => {
         window.particlesJS('particles-js', {
           particles: {
             number: {
-              value: 80,
+              value: 90,
               density: {
                 enable: true,
                 value_area: 800
@@ -42,7 +42,7 @@ const App = () => {
               random: false,
               anim: {
                 enable: false,
-                speed: 1,
+                speed: 0.7,
                 opacity_min: 0.1,
                 sync: false
               }
