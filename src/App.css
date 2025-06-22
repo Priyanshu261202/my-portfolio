@@ -280,7 +280,7 @@ body {
 
 .skill-tag, .tech-tag {
   padding: 0.5rem 1rem;
-  background: rgba(79, 255, 0, 0.1);
+  background: rgba(255, 153, 0, 0.134);
   border: 1px solid var(--glass-border);
   border-radius: 8px;
   font-size: 0.85rem;
@@ -417,7 +417,7 @@ body {
 
 .me-2{
   color: #e68dff;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .social-section {
