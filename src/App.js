@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     let retries = 0;
     const maxRetries = 3;
-    const retryDelay = 1000; // 1 second
+    const retryDelay = 1000; 
 
     const initParticles = () => {
       if (window.particlesJS) {
