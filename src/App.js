@@ -8,6 +8,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { FaLinkedin, FaGithub, FaPython, FaReact, FaJava, FaAws, FaHtml5, FaCss3Alt, FaJs, FaGitAlt, FaFigma, FaDatabase, FaEnvelope, FaPhone, FaMapMarkerAlt, FaExternalLinkAlt } from 'react-icons/fa';
 import { SiTensorflow, SiFlask, SiScikitlearn, SiPandas } from 'react-icons/si';
 import coderAnimation from './assets/coder.json';
+import { Analytics } from "@vercel/analytics/react"
 
 const App = () => {
   useEffect(() => {
