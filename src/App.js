@@ -355,9 +355,10 @@ const App = () => {
       }
     }
   };
-
-  return (
+  
+return (
     <>
+      <Analytics /> 
       <MyNavbar />
       <div className="app">
         <div className="glass-background" />
