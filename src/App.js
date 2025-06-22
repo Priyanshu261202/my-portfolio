@@ -578,7 +578,7 @@ return (
               <motion.div className="contact-grid" {...staggerContainer}>
                 <motion.div className="glass-card contact-info" {...fadeInUp}>
                   <h5><FaEnvelope className="me-2" />Email</h5>
-                  <a href="mailto:priyanshushakya.work@gmail.com">priyanshu.shakya@example.com</a>
+                  <a href="mailto:priyanshushakya.work@gmail.com">priyanshushakya.work@gmail.com</a>
                 </motion.div>
                 <motion.div className="glass-card contact-info" {...fadeInUp}>
                   <h5><FaPhone className="me-2" />Phone</h5>
