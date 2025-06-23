@@ -325,6 +325,7 @@ const App = () => {
   ], []);
 
   const certificates = useMemo(() => [
+    { title: 'Deloitte Australia: Data Analytics Job Simulation ' },
     { title: 'IIT Madras: Python for Data Science ' },
     { title: 'IBM: Data Fundamentals Certification' },
     { title: 'Google Cloud: Vertex AI Specialization' },
