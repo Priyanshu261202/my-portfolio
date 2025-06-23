@@ -6,7 +6,7 @@ import Lottie from 'react-lottie';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FaLinkedin, FaGithub, FaPython, FaReact, FaJava, FaAws, FaHtml5, FaCss3Alt, FaJs, FaGitAlt, FaFigma, FaDatabase, FaEnvelope, FaPhone, FaMapMarkerAlt, FaExternalLinkAlt } from 'react-icons/fa';
-import { SiTensorflow, SiFlask, SiScikitlearn, SiPandas } from 'react-icons/si';
+import { SiTensorflow, SiFlask, SiScikitlearn, SiPandas, SiGooglegemini, SiMysql, SiVercel, SiTableau  } from 'react-icons/si';
 import coderAnimation from './assets/coder.json';
 
 const App = () => {
@@ -191,14 +191,19 @@ const App = () => {
       items: [
         { name: 'VS Code', icon: null }, 
         { name: 'Git', icon: <FaGitAlt /> }, 
-        { name: 'GitHub', icon: <FaGithub /> }, 
-        { name: 'Figma', icon: <FaFigma /> }
+        { name: 'GitHub', icon: <FaGithub /> },
+        { name: 'vercel', icon: <SiVercel /> },
+        { name: 'Figma', icon: <FaFigma /> },
+        { name: 'Tableau', icon: <SiTableau /> },
+        
       ] 
     },
     { 
-      category: 'Cloud & AI Technologies', 
+      category: 'Databases, Cloud & AI Tech.', 
       items: [
-        { name: 'AWS', icon: <FaAws /> }, 
+        { name: 'MySQL', icon: <SiMysql /> }, 
+        { name: 'AWS', icon: <FaAws /> },
+        { name: 'Vertex AI', icon: <SiGooglegemini /> },
         { name: 'TensorFlow', icon: <SiTensorflow /> }, 
         { name: 'Scikit-learn', icon: <SiScikitlearn /> }, 
         { name: 'Pandas', icon: <SiPandas /> }
