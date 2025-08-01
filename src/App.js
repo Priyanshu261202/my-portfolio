@@ -613,7 +613,7 @@ return (
 
         <footer className="footer">
           <div className="container">
-            <p> Thanks for stopping by — feel free to connect! </p>
+            <p> Thanks for stopping by, feel free to connect! </p>
           </div>
         </footer>
       </div>
